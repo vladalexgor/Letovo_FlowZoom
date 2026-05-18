@@ -533,6 +533,9 @@ td.td-areas { color: var(--muted); }
 .cfd-genplan-wrap { margin-top: 3.5rem; }
 .cfd-genplan-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
 .cfd-genplan-img { width: 100%; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,.08); display: block; }
+.cfd-genplan-map { position: relative; display: inline-block; width: 100%; }
+.cfd-genplan-map img { display: block; width: 100%; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+.q-badge { position: absolute; background: rgba(255,255,255,.92); border: 1.5px solid rgba(99,102,241,.35); border-radius: 6px; font-family: 'Onest', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1b1d24; padding: .25em .55em; line-height: 1; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 1px 6px rgba(0,0,0,.12); }
 .clima-maps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
 .clima-map-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
 .clima-map-img { width: 100%; border-radius: .8rem; box-shadow: 0 2px 12px rgba(0,0,0,.1); border: 1px solid var(--border); display: block; }
@@ -1346,7 +1349,18 @@ footer {
     </div>
     <div class="cfd-genplan-wrap">
       <div class="cfd-genplan-label">Генплан — территория исследования</div>
-      <img src="img_clima/image8.png" alt="Генплан ЖК Летово" loading="lazy" class="cfd-genplan-img">
+      <div class="cfd-genplan-map">
+        <img src="img_clima/image8.png" alt="Генплан ЖК Летово" loading="lazy">
+        <span class="q-badge" style="left:14%;top:22%">1</span>
+        <span class="q-badge" style="left:27%;top:42%">2</span>
+        <span class="q-badge" style="left:40%;top:22%">3</span>
+        <span class="q-badge" style="left:51%;top:38%">4</span>
+        <span class="q-badge" style="left:67%;top:22%">5</span>
+        <span class="q-badge" style="left:42%;top:55%">6</span>
+        <span class="q-badge" style="left:23%;top:67%">7</span>
+        <span class="q-badge" style="left:63%;top:60%">8</span>
+        <span class="q-badge" style="left:78%;top:67%">9</span>
+      </div>
     </div>
   </div>
 </section>
