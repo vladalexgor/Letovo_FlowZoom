@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>А101 · Летово · Цифровой двойник среды</title>
+<style>
+/* Onest — локальный шрифт (не требует интернета) */
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/onest-cyrillic-ext.woff2') format('woff2'); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/onest-cyrillic.woff2') format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/onest-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/onest-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/onest-cyrillic-ext.woff2') format('woff2'); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/onest-cyrillic.woff2') format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/onest-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/onest-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/onest-cyrillic-ext.woff2') format('woff2'); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/onest-cyrillic.woff2') format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/onest-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/onest-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/onest-cyrillic-ext.woff2') format('woff2'); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/onest-cyrillic.woff2') format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/onest-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/onest-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+</style>
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:      #ffffff;
+  --bg2:     #f4f6f9;
+  --bg3:     #eaecf1;
+  --text:    #1b1d24;
+  --muted:   #3e4455;
+  --border:  #e2e5ec;
+  --teal:    #2ab6a5;
+  --warm:    #6366f1;
+  --r:       1.2rem;
+}
+html { scroll-behavior: smooth; font-size: 10px; }
+body { font-family: 'Onest', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* ── TAB ACCENT SCOPING ── */
+#tab-flow    { --accent: #6366f1; --accent2: #8b8ef5; }
+#tab-clima   { --accent: #2ab6a5; --accent2: #3fcabb; }
+#tab-digital { --accent: #6366f1; --accent2: #8b8ef5; }
+
+/* ── TAB SYSTEM ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 12px rgba(0,0,0,.06);
+}
+.nav-logo {
+  font-size: 1.4rem; font-weight: 500; color: var(--muted);
+  letter-spacing: .06em; white-space: nowrap;
+}
+.nav-logo b { color: var(--text); font-weight: 600; }
+
+/* ── TAB SWITCHER ── */
+.tab-switcher {
+  display: flex; gap: .4rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10rem; padding: .4rem;
+}
+.tab-btn {
+  font-family: 'Onest', sans-serif;
+  font-size: 1.3rem; font-weight: 500; color: var(--muted);
+  background: none; border: none; border-radius: 10rem;
+  padding: .6rem 1.8rem; cursor: pointer;
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--text); background: rgba(0,0,0,.05); }
+.tab-btn.active { background: var(--text); color: #fff; }
+.tab-btn[data-tab="clima"].active  { background: var(--teal); }
+.tab-btn[data-tab="flow"].active   { background: var(--warm); }
+.tab-btn[data-tab="digital"].active { background: var(--text); }
+
+/* ── SHARED LAYOUT ── */
+.section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 10rem 4rem 8rem;
+}
+.section-full { padding: 10rem 4rem 8rem; }
+.section-full > .section-inner { max-width: 1200px; margin: 0 auto; }
+
+/* ── SECTION LABEL ── */
+.s-tag {
+  display: inline-flex; align-items: center; gap: .8rem;
+  font-size: 1.1rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 2rem;
+}
+.s-tag::before {
+  content: ''; display: block; width: 24px; height: 2px;
+  background: var(--accent); border-radius: 2px;
+}
+h2.s-title {
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  font-weight: 500; line-height: 1.1; margin-bottom: 1.8rem; letter-spacing: -0.02em;
+}
+p.s-lead {
+  font-size: 1.7rem; color: var(--muted); line-height: 1.65;
+  max-width: 760px; margin-bottom: 5rem;
+}
+
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: absolute; bottom: 3.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .8rem;
+  color: var(--muted); font-size: 1.2rem;
+}
+.scroll-arr {
+  width: 22px; height: 22px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg); animation: bounce 1.8s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: rotate(45deg) translateY(0); }
+  50%      { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ── MINI LABEL (shared) ── */
+.mini-label {
+  font-size: 1.1rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: .8rem;
+}
+.mini-block { margin-bottom: 1.8rem; }
+.mini-text { font-size: 1.4rem; color: var(--muted); line-height: 1.6; }
+
+/* ── ACCORDION (shared) ── */
+.accordion-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.acc-item {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r); overflow: hidden; transition: border-color .3s;
+  box-shadow: 0 1px 6px rgba(0,0,0,.04);
+}
+.acc-item.open { border-color: rgba(var(--accent-rgb, 99,102,241),.55); }
+#tab-clima .acc-item.open   { border-color: rgba(42,182,165,.5); }
+#tab-digital .acc-item.open { border-color: rgba(99,102,241,.55); }
+.acc-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 3rem 3.2rem; cursor: pointer; gap: 2rem;
+}
+.acc-head-left { flex: 1; }
+.acc-tag {
+  font-size: 1.1rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text); margin-bottom: .8rem;
+}
+.acc-head-title { font-size: 2rem; font-weight: 500; margin-bottom: .6rem; }
+.acc-head-sub { font-size: 1.4rem; color: var(--muted); line-height: 1.55; max-width: 680px; }
+.acc-icon {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s, transform .35s;
+}
+.acc-item.open .acc-icon { background: var(--accent); transform: rotate(180deg); }
+.acc-icon svg path { transition: stroke .25s; }
+.acc-item.open .acc-icon svg path { stroke: #fff; }
+.acc-body { display: none; padding: 0 3.2rem 3rem; }
+.acc-item.open .acc-body { display: block; }
+.acc-separator { height: 1px; background: var(--border); margin-bottom: 2.4rem; }
+.acc-body-text { font-size: 1.5rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+
+/* ══════════════════════════════════════
+   DIGITAL — специфические стили
+══════════════════════════════════════ */
+
+/* S1 Hero */
+#s1 {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding: 12rem 5rem 8rem;
+  background: linear-gradient(155deg, #f0fbf9 0%, #fdf7f4 55%, #f6f7fa 100%);
+}
+#hero-canvas-d { position: absolute; inset: 0; opacity: .45; }
+/* #tab-digital .hero-eyebrow — наследует нейтральный стиль из базового */
+.hero-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; max-width: 860px; }
+.hero-card {
+  background: rgba(255,255,255,.82); border: 1px solid rgba(226,229,236,.9);
+  border-radius: var(--r); padding: 2.4rem; backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.hero-card-num { font-size: 3rem; font-weight: 500; color: var(--accent); line-height: 1; margin-bottom: 1.2rem; }
+.hero-card-title { font-size: 1.5rem; font-weight: 500; margin-bottom: .8rem; }
+.hero-card-text { font-size: 1.3rem; color: var(--muted); line-height: 1.5; }
+
+/* S2 Три задачи */
+#s2 { background: var(--bg2); }
+#tab-digital .acc-example {
+  background: rgba(99,102,241,.06); border-left: 3px solid var(--accent);
+  border-radius: 0 .8rem .8rem 0; padding: 1.6rem 2rem; margin-bottom: 2rem;
+  font-size: 1.4rem; color: var(--text); line-height: 1.6;
+}
+#tab-digital .acc-example-label {
+  font-size: 1.1rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: .6rem;
+}
+.conflict-list { list-style: none; display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1.6rem; }
+.conflict-list li { font-size: 1.4rem; color: var(--muted); padding-left: 2rem; position: relative; line-height: 1.5; }
+.conflict-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+/* S3 Цепочка затрат */
+#s3 {}
+.chain-wrap { margin: 4rem 0 5rem; }
+.chain { display: flex; align-items: stretch; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.chain-step { flex: 1; padding: 2rem 2.4rem; border-right: 1px solid var(--border); }
+.chain-step:last-child { border-right: none; }
+.chain-step-num { font-size: 1.1rem; color: var(--accent); font-weight: 600; margin-bottom: .6rem; }
+.chain-step-title { font-size: 1.4rem; font-weight: 500; margin-bottom: .4rem; }
+.chain-step-sub { font-size: 1.25rem; color: var(--muted); line-height: 1.45; }
+
+/* S4 Примеры */
+#s4 { background: var(--bg2); }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 1.8rem; }
+.ex-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r);
+  overflow: hidden; cursor: pointer;
+  transition: border-color .3s, transform .25s, box-shadow .25s;
+  box-shadow: 0 1px 6px rgba(0,0,0,.04);
+}
+.ex-card:hover { border-color: rgba(99,102,241,.45); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+.ex-card.open { border-color: rgba(99,102,241,.55); }
+.ex-card-head { padding: 2.4rem; }
+.ex-num { font-size: 1.1rem; font-weight: 600; letter-spacing: .1em; color: var(--muted); margin-bottom: 1rem; }
+.ex-title { font-size: 1.7rem; font-weight: 500; margin-bottom: .8rem; line-height: 1.3; }
+.ex-short { font-size: 1.35rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.2rem; }
+.ex-people { display: flex; flex-wrap: wrap; gap: .5rem; }
+.ex-tag { font-size: 1.1rem; background: var(--bg3); color: var(--muted); border-radius: 10rem; padding: .25rem .9rem; border: 1px solid var(--border); }
+.ex-cta { display: flex; align-items: center; gap: .6rem; margin-top: 1.6rem; font-size: 1.3rem; font-weight: 500; color: var(--teal); }
+.ex-body { display: none; padding: 2.4rem; padding-top: 0; border-top: 1px solid var(--border); }
+.ex-card.open .ex-body { display: block; padding-top: 2rem; }
+.ex-body-text { font-size: 1.4rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.6rem; }
+.ex-money { background: var(--bg2); border: 1px solid var(--border); border-radius: .8rem; padding: 1.4rem 1.6rem; }
+.ex-money-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.ex-money-text { font-size: 1.35rem; color: var(--muted); line-height: 1.55; }
+
+/* S5 Что даёт двойник */
+#s5 {}
+.layers-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-bottom: 4rem; }
+.layers-key {
+  background: rgba(99,102,241,.06); border: 1px solid rgba(99,102,241,.3);
+  border-radius: var(--r); padding: 2.8rem;
+  font-size: 1.8rem; font-weight: 500; line-height: 1.55; margin: 2.4rem 0;
+}
+.layers-key span { color: var(--accent); }
+.layer-scheme { display: flex; flex-direction: column; gap: 1rem; }
+.layer-item {
+  display: flex; align-items: center; gap: 1.4rem;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: .8rem; padding: 1.4rem 1.8rem;
+  transition: border-color .25s, box-shadow .25s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+.layer-item:hover { border-color: rgba(99,102,241,.4); box-shadow: 0 3px 10px rgba(0,0,0,.08); }
+.layer-icon { width: 36px; height: 36px; border-radius: .6rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+.layer-name { font-size: 1.4rem; font-weight: 500; }
+.layer-result { background: rgba(42,182,165,.07); border: 1px solid rgba(42,182,165,.25); border-radius: .8rem; padding: 1.6rem 2rem; margin-top: 1rem; font-size: 1.4rem; color: var(--text); text-align: center; font-weight: 500; }
+
+/* S6 Технология */
+#s6 { background: var(--bg2); }
+.tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.tech-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,.05); }
+.tech-card-head { padding: 3rem; border-bottom: 1px solid var(--border); }
+.tech-pill { display: inline-block; font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-radius: 10rem; padding: .4rem 1.2rem; margin-bottom: 1.4rem; }
+.tech-pill.clima { background: rgba(42,182,165,.12); color: var(--teal); }
+.tech-pill.flow  { background: rgba(99,102,241,.12); color: var(--warm); }
+.tech-title { font-size: 2rem; font-weight: 500; margin-bottom: 1rem; line-height: 1.3; }
+.tech-desc { font-size: 1.45rem; color: var(--muted); line-height: 1.6; }
+.tech-card-body { padding: 2.4rem 3rem; }
+.tech-check-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+.tech-checks { display: flex; flex-direction: column; gap: .8rem; }
+.tech-check-item { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.35rem; color: var(--muted); line-height: 1.5; }
+.tech-check-item::before {
+  content: ''; width: 16px; height: 16px; flex-shrink: 0; margin-top: .1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%236366f1' stroke-width='1.5' fill='none'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%236366f1' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.tech-integration { background: var(--bg2); border: 1px solid rgba(99,102,241,.25); border-radius: var(--r); padding: 3rem; }
+.tech-integration-title { font-size: 1.8rem; font-weight: 500; margin-bottom: 1.2rem; }
+.tech-integration-text { font-size: 1.5rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.6rem; }
+.tech-integration-expand { font-size: 1.35rem; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 1.6rem; margin-top: 1.6rem; }
+
+/* S7 Участники */
+#s7 {}
+.team-center { display: flex; flex-direction: column; align-items: center; gap: 3rem; margin: 4rem 0; }
+.team-hub { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; max-width: 900px; width: 100%; }
+.team-pill-center { grid-column: 2/4; background: var(--accent); border-radius: var(--r); padding: 2rem; text-align: center; font-size: 1.6rem; font-weight: 600; color: #fff; }
+.team-pill { background: var(--bg2); border: 1px solid var(--border); border-radius: .8rem; padding: 1.4rem; font-size: 1.3rem; font-weight: 500; text-align: center; transition: border-color .25s; }
+.team-pill:hover { border-color: rgba(99,102,241,.3); }
+.team-result-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 900px; width: 100%; }
+.team-result-item {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: .8rem;
+  padding: 1.6rem 2rem; display: flex; align-items: flex-start; gap: 1rem;
+  font-size: 1.4rem; color: var(--muted); line-height: 1.5;
+}
+.team-result-item::before {
+  content: ''; width: 20px; height: 20px; flex-shrink: 0; margin-top: .1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' stroke='%232ab6a5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M6.5 10l2.5 2.5 5-5' stroke='%232ab6a5' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* S8 Этапы */
+#s8 { background: var(--bg2); }
+.stages { display: flex; flex-direction: column; gap: 1.2rem; }
+.stage-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; cursor: pointer; transition: border-color .3s; box-shadow: 0 1px 5px rgba(0,0,0,.04); }
+.stage-item.open { border-color: rgba(99,102,241,.5); }
+.stage-head { display: flex; align-items: center; gap: 2.4rem; padding: 2.4rem 3rem; }
+.stage-num { width: 44px; height: 44px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 600; color: var(--accent); flex-shrink: 0; transition: background .25s, border-color .25s; }
+.stage-item.open .stage-num { background: var(--accent); color: #fff; border-color: var(--accent); }
+.stage-head-main { flex: 1; }
+.stage-title { font-size: 1.8rem; font-weight: 500; margin-bottom: .4rem; }
+.stage-short { font-size: 1.35rem; color: var(--muted); line-height: 1.5; }
+.stage-body { display: none; padding: 0 3rem 2.8rem calc(3rem + 44px + 2.4rem); }
+.stage-item.open .stage-body { display: block; }
+.stage-body-text { font-size: 1.45rem; color: var(--muted); line-height: 1.65; }
+
+/* S9 Ценность */
+#s9 {}
+.value-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-bottom: 4rem; }
+.value-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); padding: 2rem 2.4rem; display: flex; align-items: flex-start; gap: 1.2rem; }
+.value-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: .7rem; }
+.value-text { font-size: 1.4rem; color: var(--muted); line-height: 1.55; }
+
+/* S10 Партнёрство */
+#s10 { background: linear-gradient(155deg, #f0faf9 0%, #faf5f2 55%, #f4f6f9 100%); border-top: 1px solid var(--border); }
+.partner-header { text-align: center; margin-bottom: 6rem; }
+.partner-header h2 { font-size: clamp(3rem,4.5vw,5rem); font-weight: 500; margin-bottom: 1.6rem; }
+.partner-header p { font-size: 1.7rem; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.65; }
+.partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-bottom: 5rem; }
+.partner-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 3rem; box-shadow: 0 1px 8px rgba(0,0,0,.05); }
+.partner-card-name { font-size: 1.8rem; font-weight: 600; color: var(--text); margin-bottom: 1.2rem; }
+.partner-card-text { font-size: 1.45rem; color: var(--muted); line-height: 1.65; }
+.partner-goal { background: var(--bg); border: 1px solid rgba(99,102,241,.3); border-radius: var(--r); padding: 4rem; text-align: center; margin-bottom: 4rem; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.partner-goal-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.6rem; }
+.partner-goal-text { font-size: 1.9rem; line-height: 1.6; max-width: 820px; margin: 0 auto 2rem; }
+.partner-goal-sub { font-size: 1.5rem; color: var(--muted); line-height: 1.65; max-width: 780px; margin: 0 auto; }
+.partner-cta { text-align: center; padding: 3rem; background: rgba(99,102,241,.06); border: 1px solid rgba(99,102,241,.2); border-radius: var(--r); font-size: 1.6rem; color: var(--muted); line-height: 1.65; }
+.partner-cta strong { color: var(--text); }
+
+/* ══════════════════════════════════════
+   CLIMA ZOOM — специфические стили
+══════════════════════════════════════ */
+
+/* C1 — Hero */
+#c1 {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding: 12rem 5rem 8rem;
+  background: linear-gradient(155deg, #f0faf9 0%, #f4fffe 40%, #f6f7fa 100%);
+}
+#hero-canvas-c { position: absolute; inset: 0; opacity: .5; }
+.hero-wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; }
+.hero-eyebrow {
+  font-size: 1.2rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 10rem;
+  display: inline-block; padding: .5rem 1.6rem; margin-bottom: 3.2rem;
+  background: var(--bg2);
+}
+h1.hero-title { font-size: clamp(4rem,6.5vw,7.2rem); font-weight: 500; line-height: 1.06; margin-bottom: 2.8rem; letter-spacing: -0.03em; }
+h1.hero-title em { font-style: normal; color: var(--accent); }
+p.hero-sub { font-size: 1.8rem; color: var(--muted); max-width: 700px; line-height: 1.65; margin-bottom: 4.5rem; }
+.hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; max-width: 800px; }
+.hero-stat {
+  background: rgba(255,255,255,.85); border: 1px solid rgba(226,229,236,.9);
+  border-radius: var(--r); padding: 2.4rem; backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.hero-stat-val { font-size: 3.6rem; font-weight: 500; color: var(--accent); line-height: 1; margin-bottom: 1rem; }
+.hero-stat-label { font-size: 1.35rem; color: var(--muted); line-height: 1.45; }
+
+/* C2 — Технология */
+#c2 { background: var(--bg2); }
+.steps-timeline { display: flex; gap: 0; margin: 4rem 0 5rem; }
+.step-item {
+  flex: 1; padding: 2.8rem; position: relative;
+  background: var(--bg); border: 1px solid var(--border);
+  border-right: none; transition: border-color .25s;
+}
+.step-item:first-child { border-radius: var(--r) 0 0 var(--r); }
+.step-item:last-child  { border-radius: 0 var(--r) var(--r) 0; border-right: 1px solid var(--border); }
+.step-item.active { border-color: rgba(42,182,165,.5); background: rgba(42,182,165,.04); }
+.step-badge { font-size: 1rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.step-badge.now {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(42,182,165,.12); border-radius: 10rem; padding: .3rem 1rem; color: var(--accent);
+}
+.step-name { font-size: 1.7rem; font-weight: 500; margin-bottom: .8rem; }
+.step-desc { font-size: 1.35rem; color: var(--muted); line-height: 1.55; }
+.norm-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); padding: 2.4rem; }
+.norm-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.norm-text { font-size: 1.35rem; color: var(--muted); line-height: 1.55; }
+
+/* C3 — Цели */
+#c3 {}
+.goals-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-bottom: 4rem; }
+.goal-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 3rem; transition: border-color .25s, box-shadow .25s;
+  box-shadow: 0 1px 6px rgba(0,0,0,.04);
+}
+.goal-card:hover { border-color: rgba(42,182,165,.4); box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.goal-icon { width: 48px; height: 48px; border-radius: .8rem; margin-bottom: 2rem; background: rgba(42,182,165,.12); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.goal-title { font-size: 1.8rem; font-weight: 500; margin-bottom: 1rem; }
+.goal-text { font-size: 1.4rem; color: var(--muted); line-height: 1.6; }
+.goal-aim { background: rgba(42,182,165,.06); border: 1px solid rgba(42,182,165,.2); border-radius: var(--r); padding: 2.4rem; max-width: 860px; font-size: 1.6rem; line-height: 1.6; }
+.goal-aim span { color: var(--accent); font-weight: 500; }
+
+/* C4 — Анализ окружения */
+#c4 { background: var(--bg2); }
+.context-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-bottom: 4rem; }
+.factors-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.factor-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: .8rem;
+  padding: 2rem 2.4rem; display: flex; gap: 1.6rem; align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04); transition: border-color .25s;
+}
+.factor-card:hover { border-color: rgba(42,182,165,.3); }
+.factor-num { font-size: 1.2rem; font-weight: 600; color: var(--accent); flex-shrink: 0; width: 20px; }
+.factor-name { font-size: 1.5rem; font-weight: 500; margin-bottom: .5rem; }
+.factor-desc { font-size: 1.3rem; color: var(--muted); line-height: 1.5; }
+.quarters-wrap { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.quarters-title { font-size: 1.3rem; color: var(--muted); font-weight: 500; text-align: center; }
+.quarters-grid-svg { width: 100%; max-width: 320px; }
+.q-legend { display: flex; flex-direction: column; gap: .8rem; width: 100%; max-width: 320px; }
+.q-legend-item { display: flex; align-items: center; gap: 1rem; font-size: 1.3rem; color: var(--muted); }
+.q-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+/* C5 — Сводная таблица */
+#c5 {}
+.result-table-wrap { overflow-x: auto; margin-bottom: 4rem; }
+.result-table { width: 100%; border-collapse: collapse; font-size: 1.4rem; }
+.result-table th { background: var(--bg2); padding: 1.4rem 2rem; text-align: left; font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--border); }
+.result-table td { padding: 1.6rem 2rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+.result-table tr:last-child td { border-bottom: none; }
+.result-table tr:hover td { background: rgba(42,182,165,.03); }
+.status-badge { display: inline-flex; align-items: center; gap: .5rem; font-size: 1.1rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; border-radius: 10rem; padding: .35rem 1rem; }
+.status-ok   { background: rgba(42,182,165,.12);  color: #1a9e8f; }
+.status-warn { background: rgba(99,102,241,.12); color: #4338ca; }
+.status-risk { background: rgba(234,102,74,.1);   color: #c0482a; }
+.status-open { background: rgba(42,182,165,.12);  color: #1a9e8f; }
+td.td-level { font-weight: 500; color: var(--text); white-space: nowrap; }
+td.td-areas { color: var(--muted); }
+
+/* C6 — Пешеходный уровень */
+#c6 { background: var(--bg2); }
+.zones-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+.zone-card { background: var(--bg2); border: 1px solid var(--border); border-radius: .8rem; padding: 1.6rem; }
+.zone-q { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; }
+.zone-detail { font-size: 1.3rem; color: var(--muted); line-height: 1.45; }
+.rec-list { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.rec-list li { font-size: 1.4rem; color: var(--muted); padding-left: 2rem; position: relative; line-height: 1.5; }
+.rec-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+.stat-callout { background: rgba(42,182,165,.06); border: 1px solid rgba(42,182,165,.25); border-radius: .8rem; padding: 1.8rem 2.2rem; margin-bottom: 2rem; display: flex; gap: 2rem; align-items: center; }
+.stat-callout-val { font-size: 3.2rem; font-weight: 500; color: var(--accent); line-height: 1; flex-shrink: 0; }
+.stat-callout-text { font-size: 1.45rem; color: var(--muted); line-height: 1.6; }
+.rec-callout { background: rgba(42,182,165,.05); border-left: 3px solid var(--accent); border-radius: 0 .8rem .8rem 0; padding: 1.6rem 2rem; margin-top: 1.6rem; font-size: 1.4rem; color: var(--text); line-height: 1.6; }
+
+/* C7 — Террасы */
+#c7 {}
+.terraces-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
+.terrace-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,.05); }
+.terrace-head { padding: 3rem; border-bottom: 1px solid var(--border); background: var(--bg); }
+.terrace-level { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-radius: 10rem; padding: .4rem 1.2rem; margin-bottom: 1.4rem; display: inline-block; background: rgba(42,182,165,.12); color: var(--accent); }
+.terrace-title { font-size: 2rem; font-weight: 500; margin-bottom: .8rem; line-height: 1.3; }
+.terrace-wind { font-size: 2.8rem; font-weight: 500; color: var(--text); line-height: 1; margin-bottom: .6rem; }
+.terrace-wind-sub { font-size: 1.35rem; color: var(--muted); }
+.terrace-body { padding: 2.4rem 3rem; }
+.terrace-zones { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.8rem; }
+.terrace-zone { border-radius: .6rem; padding: 1.4rem 1.6rem; font-size: 1.35rem; line-height: 1.5; }
+.terrace-zone.open-ok { background: rgba(42,182,165,.08); border: 1px solid rgba(42,182,165,.25); }
+.terrace-zone.needs-prot { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.25); }
+.tz-name { font-weight: 500; margin-bottom: .3rem; }
+.tz-desc { color: var(--muted); font-size: 1.3rem; }
+.terrace-rec-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.terrace-rec-text { font-size: 1.4rem; color: var(--muted); line-height: 1.6; }
+
+/* C8 — Приоритеты */
+#c8 { background: var(--bg2); }
+.priority-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.priority-grid-cont { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.priority-grid-title { font-size: 1.3rem; color: var(--muted); font-weight: 500; text-align: center; }
+.priority-list { display: flex; flex-direction: column; gap: 1.6rem; }
+.priority-group-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .8rem; }
+.prio-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.prio-high { background: #e05a3a; }
+.prio-medium { background: #e8a45a; }
+.prio-low { background: #2ab6a5; }
+.priority-items { display: flex; flex-direction: column; gap: .8rem; }
+.prio-item { background: var(--bg); border: 1px solid var(--border); border-radius: .8rem; padding: 1.6rem 2rem; }
+.prio-item-head { display: flex; align-items: center; gap: 1.2rem; margin-bottom: .5rem; }
+.prio-q { font-size: 1.4rem; font-weight: 600; color: var(--text); }
+.prio-pct { font-size: 1.3rem; color: var(--muted); }
+.prio-desc { font-size: 1.35rem; color: var(--muted); line-height: 1.5; }
+.prio-measures { font-size: 1.3rem; color: var(--muted); margin-top: .5rem; }
+
+/* C9 — Резюме */
+#c9 { background: linear-gradient(155deg, #f0faf9 0%, #f4fffe 55%, #f6f7fa 100%); border-top: 1px solid var(--border); }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; }
+.summary-block-label { font-size: 1.1rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.6rem; }
+.summary-items { display: flex; flex-direction: column; gap: .8rem; }
+.summary-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: var(--bg); border: 1px solid var(--border); border-radius: .8rem;
+  padding: 1.4rem 1.8rem; font-size: 1.4rem; color: var(--muted); line-height: 1.5;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+.summary-item::before {
+  content: ''; width: 18px; height: 18px; flex-shrink: 0; margin-top: .1rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='8' stroke='%232ab6a5' stroke-width='1.5' fill='none'/%3E%3Cpath d='M5.5 9l2.5 2.5 5-5' stroke='%232ab6a5' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.next-step { background: var(--bg); border: 1px solid rgba(42,182,165,.3); border-radius: var(--r); padding: 4rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.next-step-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.6rem; }
+.next-step-title { font-size: clamp(2rem,3vw,3rem); font-weight: 500; margin-bottom: 1.6rem; line-height: 1.3; }
+.next-step-text { font-size: 1.6rem; color: var(--muted); line-height: 1.65; max-width: 800px; margin: 0 auto 2.4rem; }
+.next-quarters { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+.nq-pill { border-radius: var(--r); padding: 1.4rem 2.4rem; font-size: 1.4rem; font-weight: 500; border: 1px solid rgba(42,182,165,.3); background: rgba(42,182,165,.06); }
+.nq-pill strong { color: var(--text); display: block; font-size: 1.6rem; margin-bottom: .3rem; }
+.nq-pill span { color: var(--muted); font-size: 1.3rem; }
+
+/* Clima — CFD изображения */
+.cfd-model-wrap { margin-top: 3rem; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+.cfd-model-img { width: 100%; display: block; }
+.cfd-img-caption { font-size: 1.2rem; color: var(--muted); text-align: center; padding: 1rem 1.6rem .2rem; letter-spacing: .03em; }
+.cfd-genplan-wrap { margin-top: 3.5rem; }
+.cfd-genplan-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.cfd-genplan-img { width: 100%; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,.08); display: block; }
+.clima-maps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+.clima-map-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.clima-map-img { width: 100%; border-radius: .8rem; box-shadow: 0 2px 12px rgba(0,0,0,.1); border: 1px solid var(--border); display: block; }
+.terrace-img-wrap { overflow: hidden; border-bottom: 1px solid var(--border); }
+.terrace-img { width: 100%; display: block; }
+.terrace-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.terrace-detail-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.terrace-detail-img { width: 100%; border-radius: .8rem; box-shadow: 0 2px 12px rgba(0,0,0,.1); border: 1px solid var(--border); display: block; }
+
+/* ══════════════════════════════════════
+   FLOW ZOOM — специфические стили
+══════════════════════════════════════ */
+
+/* F1 — Hero */
+#f1 {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding: 12rem 5rem 8rem;
+  background: linear-gradient(155deg, #fdf7f4 0%, #faf5f2 40%, #f6f7fa 100%);
+}
+#hero-canvas-f { position: absolute; inset: 0; opacity: .45; }
+/* #tab-flow .hero-eyebrow — наследует нейтральный стиль из базового */
+#tab-flow .step-item.active { border-color: rgba(99,102,241,.5); background: rgba(99,102,241,.04); }
+#tab-flow .step-badge.now { background: rgba(99,102,241,.12); }
+
+/* F2 — Технология */
+#f2 { background: var(--bg2); }
+
+/* F3 — Аудитория */
+#f3 {}
+.audience-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-bottom: 4rem; }
+.audience-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 2.4rem; text-align: center; box-shadow: 0 1px 6px rgba(0,0,0,.04);
+  transition: border-color .25s, box-shadow .25s;
+}
+.audience-card:hover { border-color: rgba(99,102,241,.4); box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.audience-pct { font-size: 3rem; font-weight: 500; color: var(--accent); line-height: 1; margin-bottom: 1rem; }
+.audience-name { font-size: 1.4rem; color: var(--muted); line-height: 1.45; }
+.scenarios-bar { display: flex; gap: 0; }
+.scenario-item {
+  flex: 1; padding: 2.8rem; background: var(--bg); border: 1px solid var(--border);
+  border-right: none; text-align: center; transition: border-color .25s;
+}
+.scenario-item:first-child { border-radius: var(--r) 0 0 var(--r); }
+.scenario-item:last-child { border-radius: 0 var(--r) var(--r) 0; border-right: 1px solid var(--border); border-color: rgba(99,102,241,.5); background: rgba(99,102,241,.04); }
+.scenario-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
+.scenario-name { font-size: 1.6rem; font-weight: 500; margin-bottom: .5rem; }
+.scenario-sub { font-size: 1.3rem; color: var(--muted); }
+
+/* F4 — Критерии LOS */
+#f4 { background: var(--bg2); }
+.los-table-wrap { overflow-x: auto; margin-bottom: 3rem; }
+.los-table { width: 100%; border-collapse: collapse; font-size: 1.4rem; }
+.los-table th { background: var(--bg); padding: 1.4rem 2rem; text-align: left; font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--border); }
+.los-table td { padding: 1.6rem 2rem; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.5; }
+.los-table tr:last-child td { border-bottom: none; }
+.los-table tr:hover td { background: rgba(99,102,241,.03); }
+.los-badge { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; font-size: 1.4rem; font-weight: 700; }
+.los-a { background: rgba(42,182,165,.15);  color: #159d8e; }
+.los-b { background: rgba(100,180,100,.15); color: #3d7a3d; }
+.los-c { background: rgba(195,200,50,.15);  color: #6b6b00; }
+.los-d { background: rgba(230,150,50,.15);  color: #a05a00; }
+.los-e { background: rgba(220,60,60,.12);   color: #b02020; }
+td.td-muted { color: var(--muted); }
+.los-note { background: rgba(99,102,241,.06); border: 1px solid rgba(99,102,241,.25); border-radius: var(--r); padding: 2.4rem; font-size: 1.6rem; line-height: 1.6; }
+.los-note span { color: var(--accent); font-weight: 500; }
+
+/* F5 — Общая картина */
+#f5 {}
+.flow-map-section { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; margin-bottom: 2rem; }
+.flow-map-wrap { position: relative; }
+.flow-map-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+.flow-map-img { width: 100%; border-radius: var(--r); box-shadow: 0 4px 24px rgba(0,0,0,.1); border: 1px solid var(--border); }
+.flow-map-full .flow-map-img { max-height: 580px; object-fit: contain; background: var(--bg2); }
+.flow-map-notes { display: flex; flex-direction: column; gap: 1.2rem; }
+.fmn-title { font-size: 1.6rem; font-weight: 500; margin-bottom: .4rem; }
+.fmn-items { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1.6rem; }
+.fmn-item { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1.4rem; border-radius: .8rem; border: 1px solid var(--border); background: var(--bg); font-size: 1.35rem; color: var(--muted); line-height: 1.5; }
+.fmn-ok   { border-color: rgba(42,182,165,.3);  background: rgba(42,182,165,.04);  }
+.fmn-warn { border-color: rgba(99,102,241,.3); background: rgba(99,102,241,.04); }
+.fmn-risk { border-color: rgba(220,60,60,.25);  background: rgba(220,60,60,.04);  }
+.fmn-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 28px; border-radius: .5rem; font-size: 1.2rem; font-weight: 700; flex-shrink: 0; padding: 0 .6rem; }
+.los-abc     { background: rgba(42,182,165,.15); color: #159d8e; }
+.los-d-badge { background: rgba(230,150,50,.15); color: #a05a00; }
+.los-e-badge { background: rgba(220,60,60,.12);  color: #b02020; }
+.fmn-sectors { margin-top: .4rem; }
+.fmn-sectors-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.fmn-sector-tags { display: flex; flex-wrap: wrap; gap: .6rem; }
+.fmn-sector-tag { font-size: 1.35rem; font-weight: 600; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); border-radius: .5rem; padding: .4rem .9rem; }
+
+/* F6 — Интенсивность */
+#f6 {}
+.flow-insight { background: rgba(99,102,241,.06); border: 1px solid rgba(99,102,241,.25); border-radius: var(--r); padding: 2.4rem; font-size: 1.6rem; line-height: 1.6; margin-top: 3rem; }
+
+/* F7 — Зоны внимания */
+#f7 {}
+#tab-flow .stat-callout { background: rgba(99,102,241,.06); border-color: rgba(99,102,241,.25); }
+#tab-flow .stat-callout .stat-callout-val { color: var(--accent); }
+.zone-maps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+.zone-map-label { font-size: 1.2rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
+.zone-map-img { width: 100%; border-radius: .8rem; box-shadow: 0 2px 12px rgba(0,0,0,.1); border: 1px solid var(--border); }
+#tab-flow .rec-callout { background: rgba(99,102,241,.05); border-color: var(--accent); }
+.rec-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin-top: 1.6rem; }
+.rec-option { border-radius: .8rem; padding: 2rem; border: 1px solid var(--border); }
+.rec-option-a { background: rgba(42,182,165,.05);  border-color: rgba(42,182,165,.25); }
+.rec-option-b { background: rgba(99,102,241,.05); border-color: rgba(99,102,241,.25); }
+.rec-option-label { font-size: 1.3rem; font-weight: 600; color: var(--text); margin-bottom: .8rem; }
+.rec-option-text { font-size: 1.35rem; color: var(--muted); line-height: 1.6; }
+
+/* F8 — Резюме */
+#f8 { background: linear-gradient(155deg, #fdf7f4 0%, #faf5f2 55%, #f6f7fa 100%); border-top: 1px solid var(--border); }
+#tab-flow .summary-item::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='8' stroke='%236366f1' stroke-width='1.5' fill='none'/%3E%3Cpath d='M5.5 9l2.5 2.5 5-5' stroke='%236366f1' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.f-next-step { background: var(--bg); border: 1px solid rgba(99,102,241,.3); border-radius: var(--r); padding: 4rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.f-nq-pill { border-radius: var(--r); padding: 1.4rem 2.4rem; font-size: 1.4rem; font-weight: 500; border: 1px solid rgba(99,102,241,.3); background: rgba(99,102,241,.06); }
+.f-nq-pill strong { color: var(--text); display: block; font-size: 1.6rem; margin-bottom: .3rem; }
+.f-nq-pill span { color: var(--muted); font-size: 1.3rem; }
+
+@media (max-width: 900px) {
+  /* Flow */
+  .audience-grid { grid-template-columns: repeat(2,1fr); }
+  .flow-map-section { grid-template-columns: 1fr; }
+  .zone-maps-grid { grid-template-columns: 1fr; }
+  .rec-options { grid-template-columns: 1fr; }
+  /* Clima */
+  .context-wrap { grid-template-columns: 1fr; }
+  .goals-grid { grid-template-columns: 1fr 1fr; }
+  .terraces-grid { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .priority-wrap { grid-template-columns: 1fr; }
+  .clima-maps-grid { grid-template-columns: 1fr; }
+  .terrace-detail-grid { grid-template-columns: 1fr; }
+  /* Digital */
+  .tech-grid { grid-template-columns: 1fr; }
+  .partners-grid { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: 1fr 1fr; }
+  .layers-wrap { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-cards { grid-template-columns: 1fr; }
+  .team-hub { grid-template-columns: repeat(2,1fr); }
+  .team-result-list { grid-template-columns: 1fr; }
+  /* Nav */
+  nav { padding: 1rem 1.6rem; }
+  .tab-btn { font-size: 1.1rem; padding: .5rem 1.2rem; }
+  /* Shared */
+  .section { padding: 6rem 2rem 5rem; }
+  .section-full { padding: 6rem 2rem 5rem; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 2.8rem 4rem; display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 -1px 0 var(--border);
+}
+.f-logo { font-size: 1.4rem; font-weight: 500; color: var(--muted); }
+.f-logo b { color: var(--text); }
+.f-note { font-size: 1.3rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════
+     NAV + TAB SWITCHER
+════════════════════ -->
+<nav>
+  <div class="nav-logo">А101 · <b>Летово</b></div>
+  <div class="tab-switcher">
+    <button class="tab-btn" data-tab="flow">Flow Zoom</button>
+    <button class="tab-btn" data-tab="clima">Clima Zoom</button>
+    <button class="tab-btn active" data-tab="digital">Цифровой двойник</button>
+  </div>
+</nav>
+
+<!-- ════════════════════
+     TAB 1 — FLOW ZOOM
+════════════════════ -->
+<div id="tab-flow" class="tab-panel">
+
+<!-- F1 HERO -->
+<section id="f1">
+  <canvas id="hero-canvas-f"></canvas>
+  <div class="hero-wrap">
+    <div class="hero-eyebrow">А101 · Летово · Цифровой двойник пешеходных потоков</div>
+    <h1 class="hero-title">
+      Пешеходные потоки:<br><em>80–90%</em> сети<br>в комфортном диапазоне
+    </h1>
+    <p class="hero-sub">
+      Flow Zoom — анализ пешеходной нагрузки ЖК Летово на этапе мастер-плана.
+      Моделирование выполнено по 35 сценариям для 8 групп жителей.
+      Выявлены зоны внимания и сформированы точечные рекомендации
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">35</div>
+        <div class="hero-stat-label">уникальных сценариев перемещения для 8 групп жителей</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">80–90%</div>
+        <div class="hero-stat-label">пешеходной сети в комфортном диапазоне плотности A–C</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">4</div>
+        <div class="hero-stat-label">зоны внимания: Г4, Д5, Е4, Е5 — требуют точечной настройки</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Далее</span><div class="scroll-arr"></div></div>
+</section>
+
+<!-- F2 ТЕХНОЛОГИЯ -->
+<section id="f2" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Технология</div>
+    <h2 class="s-title">Переход от интуитивных решений<br>к обоснованным данным</h2>
+    <p class="s-lead">Цель — понять, как жители будут перемещаться по территории: какие маршруты станут основными, где возникнут перегрузки, неэффективные связи и зоны с недооценённым потенциалом</p>
+    <div class="steps-timeline">
+      <div class="step-item active">
+        <div class="step-badge now">▶ Текущий этап</div>
+        <div class="step-name">Мастер-план</div>
+        <div class="step-desc">Оценить загрузку пешеходных маршрутов. Проверить дворы, общественные пространства, спортивные зоны и коммерческие фронты. Изменения на этом этапе наиболее доступны.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">→ Следующий этап</div>
+        <div class="step-name">Проект</div>
+        <div class="step-desc">Верификация архитектурных решений: ширина дорожек, точки сужений, зоны ожидания, МАФ и озеленение вне транзитных линий.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">→ Будущий этап</div>
+        <div class="step-name">Реализация и эксплуатация</div>
+        <div class="step-desc">Подтвердить эффект решений, проверить навигацию, скорректировать элементы среды по фактическим сценариям использования.</div>
+      </div>
+    </div>
+    <div class="norm-bar">
+      <div class="norm-item">
+        <div class="norm-label">Плотность потока</div>
+        <div class="norm-text">Выявление зон свободного движения, перегрузки и дискомфорта. Основной параметр — чел/м².</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Интенсивность потока</div>
+        <div class="norm-text">Проверка, выдерживают ли маршруты фактическую нагрузку. Измеряется в тыс. чел/час.</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Траектории движения</div>
+        <div class="norm-text">Понять, где люди пойдут по проектным маршрутам, а где возникнут кратчайшие «народные тропы».</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Организация дворов</div>
+        <div class="norm-text">Защитить приватность дворов и заранее выявить транзитные конфликты между жилой и проходной функцией.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- F3 АУДИТОРИЯ И СЦЕНАРИИ -->
+<section id="f3" class="section">
+  <div class="s-tag">Аудитория и сценарии</div>
+  <h2 class="s-title">8 групп жителей,<br>35 уникальных сценариев</h2>
+  <p class="s-lead">Территория работает не для «среднего жителя», а для разных групп с разными маршрутами, скоростью движения, временем активности и потребностью в инфраструктуре</p>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-pct">42%</div>
+      <div class="audience-name">Работающие офлайн</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">26%</div>
+      <div class="audience-name">Жители с собаками</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">20%</div>
+      <div class="audience-name">Работающие онлайн</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">14%</div>
+      <div class="audience-name">Школьники (10+)</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">12%</div>
+      <div class="audience-name">Дети до 10 лет с сопровождающим</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">5%</div>
+      <div class="audience-name">Люди старшего возраста</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">4%</div>
+      <div class="audience-name">Студенты</div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-pct">3%</div>
+      <div class="audience-name">Работающие в ночную смену</div>
+    </div>
+  </div>
+  <div class="scenarios-bar">
+    <div class="scenario-item">
+      <div class="scenario-icon">🌅</div>
+      <div class="scenario-name">Утренний час пик</div>
+      <div class="scenario-sub">Будни</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-icon">🌆</div>
+      <div class="scenario-name">Вечерний час пик</div>
+      <div class="scenario-sub">Будни</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-icon">☀️</div>
+      <div class="scenario-name">Дневная активность</div>
+      <div class="scenario-sub">Выходной день · результаты ниже</div>
+    </div>
+  </div>
+</section>
+
+<!-- F4 КРИТЕРИИ ОЦЕНКИ -->
+<section id="f4" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Критерии оценки</div>
+    <h2 class="s-title">Шкала комфорта<br>пешеходных путей (LOS)</h2>
+    <p class="s-lead">Уровень обслуживания пешеходных потоков по Фруину (Fruin, 1971) и HCM 2000 — международный стандарт, адаптированный для жилой застройки</p>
+    <div class="los-table-wrap">
+      <table class="los-table">
+        <thead>
+          <tr><th>Уровень</th><th>Плотность, чел/м²</th><th>Характеристика</th><th>Доля в мастер-плане</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="los-badge los-a">A</span></td>
+            <td>0–0,3</td>
+            <td>Свободное движение, люди не влияют на скорость друг друга</td>
+            <td class="td-muted">~40–50%</td>
+          </tr>
+          <tr>
+            <td><span class="los-badge los-b">B</span></td>
+            <td>0,3–0,5</td>
+            <td>Умеренная свобода манёвра, небольшие ограничения скорости</td>
+            <td class="td-muted">~25–30%</td>
+          </tr>
+          <tr>
+            <td><span class="los-badge los-c">C</span></td>
+            <td>0,5–0,75</td>
+            <td>Рабочая плотность активных маршрутов, обгон затруднён</td>
+            <td class="td-muted">~15–20%</td>
+          </tr>
+          <tr>
+            <td><span class="los-badge los-d">D</span></td>
+            <td>0,75–1,25</td>
+            <td>Участки повышенной нагрузки, нужна проверка ширины и сужений</td>
+            <td class="td-muted">~7–12%</td>
+          </tr>
+          <tr>
+            <td><span class="los-badge los-e">E</span></td>
+            <td>&gt;1,25</td>
+            <td>Локальные пики, требуется проектная настройка</td>
+            <td class="td-muted">~3–5%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="los-note">
+      <b>Вывод:</b> 80–90% пешеходной сети мастер-плана находится в <span>комфортном диапазоне A–C</span>, без признаков системной перегрузки. Зоны повышенной нагрузки D–E составляют около 10–20%, из них критические пики категории E — порядка 3–5%
+    </div>
+  </div>
+</section>
+
+<!-- F5 ОБЩАЯ КАРТИНА -->
+<section id="f5" class="section">
+  <div class="s-tag">Пешеходная сеть · Общая картина</div>
+  <h2 class="s-title">Оценка пешеходной сети<br>мастер-плана</h2>
+  <p class="s-lead">Результаты для сценария «Выходной день» — наиболее нагруженный сценарий, показывающий пиковую загрузку всей сети</p>
+  <div class="flow-map-section">
+    <div class="flow-map-wrap">
+      <div class="flow-map-label">Плотность пешеходного потока · чел/м²</div>
+      <img src="img_flow/image19.png" alt="Карта плотности пешеходного потока — общая картина" loading="lazy" class="flow-map-img">
+    </div>
+    <div class="flow-map-notes">
+      <div class="fmn-title">Общие результаты</div>
+      <div class="fmn-items">
+        <div class="fmn-item fmn-ok">
+          <div class="fmn-badge los-abc">A–C</div>
+          <div class="fmn-text"><b>~65–90%</b> сети — свободное движение и рабочая нагрузка, системных перегрузок нет</div>
+        </div>
+        <div class="fmn-item fmn-warn">
+          <div class="fmn-badge los-d-badge">D</div>
+          <div class="fmn-text"><b>~7–12%</b> — участки повышенной нагрузки, нужна проверка ширины</div>
+        </div>
+        <div class="fmn-item fmn-risk">
+          <div class="fmn-badge los-e-badge">E</div>
+          <div class="fmn-text"><b>~3–5%</b> — локальные пики, требуется проектная настройка</div>
+        </div>
+      </div>
+      <div class="fmn-sectors">
+        <div class="fmn-sectors-label">Зоны локальной проверки</div>
+        <div class="fmn-sector-tags">
+          <span class="fmn-sector-tag">Г4</span>
+          <span class="fmn-sector-tag">Д5</span>
+          <span class="fmn-sector-tag">Е4</span>
+          <span class="fmn-sector-tag">Е5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- F6 ИНТЕНСИВНОСТЬ -->
+<section id="f6" class="section-full" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="s-tag">Интенсивность потоков</div>
+    <h2 class="s-title">Какие маршруты примут<br>основную ежедневную нагрузку</h2>
+    <p class="s-lead">Интенсивность потока показывает, как нагрузка распределяется по территории. Самые выраженные потоки формируются на магистральных связях, выходах из кварталов и маршрутах к общественным и спортивным зонам</p>
+    <div class="flow-map-wrap flow-map-full">
+      <div class="flow-map-label">Интенсивность пешеходного потока · тыс. чел/час</div>
+      <img src="img_flow/image21.png" alt="Карта интенсивности пешеходного потока" loading="lazy" class="flow-map-img">
+    </div>
+    <div class="flow-insight">
+      Территория будет <b>проницаемой и связанной</b>. Участки с высокой интенсивностью — Г4, Д5, Е4, Е5 — требуют проверки рабочей ширины проходов, пересечений, входных групп, озеленения, МАФ и мест остановки на этапе проектирования
+    </div>
+  </div>
+</section>
+
+<!-- F7 ЗОНЫ ВНИМАНИЯ -->
+<section id="f7" class="section">
+  <div class="s-tag">Зоны внимания</div>
+  <h2 class="s-title">4 сектора, требующих<br>проектной настройки</h2>
+  <p class="s-lead">Выявленные зоны повышенной нагрузки не требуют пересмотра мастер-плана — достаточно точечных архитектурных корректировок на этапе проектирования благоустройства</p>
+  <div class="accordion-list">
+
+    <!-- Г4 -->
+    <div class="acc-item">
+      <div class="acc-head">
+        <div class="acc-head-left">
+          <div class="acc-tag">Сектор Г4</div>
+          <div class="acc-head-title">Узел пересечения магистральных маршрутов</div>
+          <div class="acc-head-sub">Локальные пики плотности &gt;1,25 чел/м² — требуется проверка ширины и устранение сужений</div>
+        </div>
+        <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-separator"></div>
+        <div class="stat-callout">
+          <div class="stat-callout-val">&gt;1,25</div>
+          <div class="stat-callout-text">чел/м² — максимальная плотность потока в секторе при нагрузке 650 чел/час. Декоративное арочное благоустройство пешеходами игнорируется</div>
+        </div>
+        <div class="zone-maps-grid">
+          <div class="zone-map-item">
+            <div class="zone-map-label">Плотность потока</div>
+            <img src="img_flow/image23.png" alt="Г4 — плотность" loading="lazy" class="zone-map-img">
+          </div>
+          <div class="zone-map-item">
+            <div class="zone-map-label">Интенсивность потока</div>
+            <img src="img_flow/image22.png" alt="Г4 — интенсивность" loading="lazy" class="zone-map-img">
+          </div>
+        </div>
+        <p class="acc-body-text">В левой центральной зоне ортогональные (Г-образные) узлы создают сопротивление транзиту. Маршруты коррелируют с проектным графом, однако пики плотности блокируют манёвр обгона.</p>
+        <p class="acc-body-text">Фиксируется низкоинтенсивный сквозной трафик через дворовое пространство. Узел пересечения магистральных маршрутов стабильно генерирует плотность потока выше средней — высокий потенциал использования территории требует приоритетного внимания к качеству архитектурных решений.</p>
+        <div class="rec-callout">
+          <b>Что делать архитектору:</b> проверить ширину и трассировку магистральных маршрутов в секторе, убрать сужения из рабочей зоны движения, декоративные элементы вынести за пределы транзитной линии
+        </div>
+      </div>
+    </div>
+
+    <!-- Д5 -->
+    <div class="acc-item">
+      <div class="acc-head">
+        <div class="acc-head-left">
+          <div class="acc-tag">Сектор Д5</div>
+          <div class="acc-head-title">Устойчивый транзит через двор — принципиальное решение</div>
+          <div class="acc-head-sub">~505 чел/час через дворовое пространство при плотности ~1,0 чел/м²: сохранить проницаемость или закрыть двор</div>
+        </div>
+        <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-separator"></div>
+        <div class="stat-callout">
+          <div class="stat-callout-val">~0,9</div>
+          <div class="stat-callout-text">чел/м² — максимальная плотность потока в секторе. Устойчивый транзитный коридор через двор — около 505 чел/час</div>
+        </div>
+        <div class="zone-maps-grid">
+          <div class="zone-map-item">
+            <div class="zone-map-label">Плотность потока</div>
+            <img src="img_flow/image28.png" alt="Д5 — плотность" loading="lazy" class="zone-map-img">
+          </div>
+          <div class="zone-map-item">
+            <div class="zone-map-label">Интенсивность потока</div>
+            <img src="img_flow/image26.png" alt="Д5 — интенсивность" loading="lazy" class="zone-map-img">
+          </div>
+        </div>
+        <p class="acc-body-text">Фактическое движение совпадает с проектной сетью, но через двор проходит устойчивый транзитный коридор. При плотности ~1,0 чел/м² и отсутствии физических преград двор фактически включается в общую пешеходную сеть. Необходимо принять принципиальное решение по двору.</p>
+        <div class="rec-options">
+          <div class="rec-option rec-option-a">
+            <div class="rec-option-label">Если сохраняется проницаемость</div>
+            <div class="rec-option-text">Оформить транзитную ось как контролируемый маршрут: отделить её от зон отдыха геопластикой, плотным озеленением, покрытием и посадкой МАФ вне линии движения. Первый этаж вдоль маршрута — под стрит-ритейл или сервисные функции.</div>
+          </div>
+          <div class="rec-option rec-option-b">
+            <div class="rec-option-label">Если двор должен быть приватным</div>
+            <div class="rec-option-text">Замкнуть контур двора, предусмотреть СКУД и пересчитать маршруты с переносом нагрузки 505 чел/час на внешний тротуарный периметр. Внешний маршрут должен быть удобнее и шире, чем проход через двор.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Е4 -->
+    <div class="acc-item">
+      <div class="acc-head">
+        <div class="acc-head-left">
+          <div class="acc-tag">Сектор Е4</div>
+          <div class="acc-head-title">Западная дорожка как основной транзитный маршрут</div>
+          <div class="acc-head-sub">~1000 чел/час при плотности 1,25 чел/м² — проверить тротуар шириной 3 м на достаточность</div>
+        </div>
+        <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-separator"></div>
+        <div class="stat-callout">
+          <div class="stat-callout-val">~1,25</div>
+          <div class="stat-callout-text">чел/м² — максимальная плотность потока в секторе при интенсивности ~1000 чел/час. Тротуар 3 м нужно проверить на достаточность рабочей ширины</div>
+        </div>
+        <div class="zone-maps-grid">
+          <div class="zone-map-item">
+            <div class="zone-map-label">Плотность потока</div>
+            <img src="img_flow/image31.png" alt="Е4 — плотность" loading="lazy" class="zone-map-img">
+          </div>
+          <div class="zone-map-item">
+            <div class="zone-map-label">Интенсивность потока</div>
+            <img src="img_flow/image30.png" alt="Е4 — интенсивность" loading="lazy" class="zone-map-img">
+          </div>
+        </div>
+        <p class="acc-body-text">Фактическое движение в целом совпадает с проектными траекториями, но пересечение сектора с северо-запада на юго-восток концентрируется в западной части. Встречное движение, обгон, остановки, МАФ и озеленение могут создавать локальный дискомфорт.</p>
+        <p class="acc-body-text">Спортивный кластер в южной части сектора попадает на транзитную траекторию — важно разделить проходное движение и зоны спортивного пребывания.</p>
+        <div class="rec-callout">
+          <b>Что делать архитектору:</b>
+          <ul class="rec-list" style="margin-top:.8rem">
+            <li>уточнить ширину и трассировку западной дорожки</li>
+            <li>убрать сужения из рабочей зоны движения</li>
+            <li>предусмотреть боковые зоны ожидания и отдыха</li>
+            <li>спортивные элементы размещать вне основного транзитного потока</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Е5 -->
+    <div class="acc-item">
+      <div class="acc-head">
+        <div class="acc-head-left">
+          <div class="acc-tag">Сектор Е5</div>
+          <div class="acc-head-title">Схождение разнонаправленных маршрутов рядом со спортивной зоной</div>
+          <div class="acc-head-sub">&gt;1000 чел/час при плотности 1,25 чел/м² — разделить транзитное движение и спортивную функцию</div>
+        </div>
+        <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="acc-body">
+        <div class="acc-separator"></div>
+        <div class="stat-callout">
+          <div class="stat-callout-val">~1,25</div>
+          <div class="stat-callout-text">чел/м² — максимальная плотность потока в секторе. Разнонаправленные маршруты сходятся в один коридор рядом со спортивной зоной</div>
+        </div>
+        <div class="zone-maps-grid">
+          <div class="zone-map-item">
+            <div class="zone-map-label">Плотность потока</div>
+            <img src="img_flow/image27.png" alt="Е5 — плотность" loading="lazy" class="zone-map-img">
+          </div>
+          <div class="zone-map-item">
+            <div class="zone-map-label">Интенсивность потока</div>
+            <img src="img_flow/image24.png" alt="Е5 — интенсивность" loading="lazy" class="zone-map-img">
+          </div>
+        </div>
+        <p class="acc-body-text">Сквозной поток через двор в западной части сектора не является основным риском. Главная проектная задача — настроить основной коридор так, чтобы транзит не пересекал зоны спортивного пребывания.</p>
+        <div class="rec-callout">
+          <b>Что делать архитектору:</b>
+          <ul class="rec-list" style="margin-top:.8rem">
+            <li>уточнить трассировку основного маршрута</li>
+            <li>проверить ширину прохода и убрать сужения</li>
+            <li>места ожидания, отдыха и наблюдения за спортом разместить сбоку от транзитной линии</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- F8 РЕЗЮМЕ -->
+<section id="f8">
+  <div class="section" style="padding-top:10rem">
+    <div class="s-tag">Резюме</div>
+    <h2 class="s-title">Выводы и рекомендации</h2>
+    <div class="summary-grid">
+      <div>
+        <div class="summary-block-label">Результаты анализа</div>
+        <div class="summary-items">
+          <div class="summary-item">На этапе мастер-плана выполнен анализ пешеходной нагрузки по 35 сценариям для 8 групп жителей</div>
+          <div class="summary-item">80–90% пешеходной сети в комфортном диапазоне A–C — системной перегрузки нет</div>
+          <div class="summary-item">Зоны D–E составляют 10–20%, критические пики E (&gt;1,25 чел/м²) — лишь 3–5%</div>
+          <div class="summary-item">Выявлены 4 локальных зоны внимания: Г4, Д5, Е4, Е5</div>
+        </div>
+      </div>
+      <div>
+        <div class="summary-block-label">Рекомендуемые мероприятия</div>
+        <div class="summary-items">
+          <div class="summary-item">Уточнить трассировку и ширину западной дорожки (Е4, Е5), убрать сужения из рабочей зоны движения</div>
+          <div class="summary-item">В секторе Д5 — либо выделить транзитную ось геопластикой, либо замкнуть контур двора с переносом нагрузки на внешний тротуар</div>
+          <div class="summary-item">Боковые зоны отдыха и наблюдения за спортом размещать вне основного транзитного потока (Е4, Е5)</div>
+          <div class="summary-item">Первые этажи вдоль транзитных коридоров (Д5) использовать под стрит-ритейл или сервисные функции</div>
+        </div>
+      </div>
+    </div>
+    <div class="f-next-step">
+      <div class="next-step-label">Следующий шаг</div>
+      <div class="next-step-title">Верификация архитектурных решений<br>в зонах внимания</div>
+      <div class="next-step-text">Проверить секторы Г4, Д5, Е4, Е5 на этапе проектирования благоустройства — уточнить ширину проходов, МАФ, озеленение и точки коммерческой активности по фактической траектории потоков</div>
+      <div class="next-quarters">
+        <div class="f-nq-pill"><strong>Г4</strong><span>Магистральные пересечения</span></div>
+        <div class="f-nq-pill"><strong>Д5</strong><span>Транзит через двор</span></div>
+        <div class="f-nq-pill"><strong>Е4</strong><span>Западная дорожка</span></div>
+        <div class="f-nq-pill"><strong>Е5</strong><span>Спортивная зона</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ════════════════════
+     TAB 2 — CLIMA ZOOM
+════════════════════ -->
+<div id="tab-clima" class="tab-panel">
+
+<!-- C1 HERO -->
+<section id="c1">
+  <canvas id="hero-canvas-c"></canvas>
+  <div class="hero-wrap">
+    <div class="hero-eyebrow">А101 · Летово · Цифровой климатический двойник</div>
+    <h1 class="hero-title">
+      Ветровой комфорт:<br><em>80% территории</em><br>комфортны
+    </h1>
+    <p class="hero-sub">
+      ClimaZoom — оценка ветрового режима ЖК Летово (пос. Сосенское) на этапе мастер-плана.
+      Анализ выполнен на трёх высотных уровнях по 8 направлениям ветра,
+      с рекомендациями по каждому из 9 кварталов
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">80%</div>
+        <div class="hero-stat-label">пешеходной территории комфортны при всех направлениях ветра</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">9</div>
+        <div class="hero-stat-label">кварталов проанализированы на трёх высотных уровнях</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">8</div>
+        <div class="hero-stat-label">направлений ветра учтено в расчётах (по розе ветров)</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Далее</span><div class="scroll-arr"></div></div>
+</section>
+
+<!-- C2 ТЕХНОЛОГИЯ -->
+<section id="c2" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Технология</div>
+    <h2 class="s-title">Что такое Clima Zoom<br>и как он применяется</h2>
+    <p class="s-lead">Цифровая климатическая верификация проектных решений — показывает влияние ветровых потоков, формы застройки и благоустройства на условия пребывания людей ещё до строительства</p>
+    <div class="steps-timeline">
+      <div class="step-item active">
+        <div class="step-badge now">▶ Текущий этап</div>
+        <div class="step-name">Мастер-план</div>
+        <div class="step-desc">Оценить ветровой комфорт территории, дворов и открытых пространств. Выявить зоны риска, заложить требования к благоустройству. Изменения на этом этапе дешевле всего.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">→ Следующий этап</div>
+        <div class="step-name">Проект</div>
+        <div class="step-desc">Уточнить фасады, входные группы, террасы, озеленение и локальную ветрозащиту по кварталам. Верификация архитектурных решений.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">→ Будущий этап</div>
+        <div class="step-name">Реализация и эксплуатация</div>
+        <div class="step-desc">Подтвердить эффект решений, проверить соответствие нормативам, скорректировать элементы среды по фактическим сценариям использования.</div>
+      </div>
+    </div>
+    <div class="norm-bar">
+      <div class="norm-item">
+        <div class="norm-label">Нормативная база</div>
+        <div class="norm-text">ГОСТ Р 56728-2015 и МДС 20-1.2006 — единственный российский документ с количественными критериями ветрового комфорта. Уровень I (≤6 м/с) как базовый порог.</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Шкала Бофорта</div>
+        <div class="norm-text">Результаты интерпретированы по шкале Бофорта, адаптированной для условий городской застройки. 0–2 балла — штиль или слабый ветер (до 3,3 м/с), не создаёт дискомфорта.</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Параметры расчёта</div>
+        <div class="norm-text">Средняя скорость ветра и порывы. Пиковые значения скорости в зонах локального ускорения и вихреобразования — ключевой параметр дискомфорта.</div>
+      </div>
+      <div class="norm-item">
+        <div class="norm-label">Международная практика</div>
+        <div class="norm-text">Сопоставление с международными методиками оценки ветрового комфорта городских территорий. OpenFOAM + Rhino для численного моделирования.</div>
+      </div>
+    </div>
+    <div class="cfd-model-wrap">
+      <img src="img_clima/image7.png" alt="3D расчётная CFD-модель застройки Летово" loading="lazy" class="cfd-model-img">
+      <div class="cfd-img-caption">3D расчётная модель застройки — OpenFOAM + Rhino</div>
+    </div>
+  </div>
+</section>
+
+<!-- C3 ЦЕЛИ -->
+<section id="c3" class="section">
+  <div class="s-tag">Задачи исследования</div>
+  <h2 class="s-title">Три задачи<br>этапа мастер-плана</h2>
+  <p class="s-lead">Исследование охватывает три взаимосвязанные задачи, результат которых — обоснованная база для проектирования благоустройства и ветрозащиты</p>
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-icon">🛡</div>
+      <div class="goal-title">Безопасная среда</div>
+      <div class="goal-text">Оценка ветрового режима на различных высотах: пешеходный уровень (1,5 м) и проектируемые террасы (25 м и 50 м). Выявление зон с опасными скоростями для разных категорий жителей.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">🌬</div>
+      <div class="goal-title">Анализ ветровых потоков</div>
+      <div class="goal-text">Выявление зон застоя воздуха и участков с ускоренными потоками для оптимизации планировочных решений. Анализ по 8 направлениям ветра для каждого квартала.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">📐</div>
+      <div class="goal-title">Научное обоснование</div>
+      <div class="goal-text">Формирование рекомендаций для следующего этапа проектирования благоустройства на основе точных данных. Нормативная база и международная практика.</div>
+    </div>
+  </div>
+  <div class="goal-aim">
+    <b>Цель работы:</b> обеспечить <span>оптимальный ветровой режим</span> территории застройки и создать условия для комфортного пребывания жителей квартала на открытом воздухе в любое время года
+  </div>
+</section>
+
+<!-- C4 АНАЛИЗ ОКРУЖЕНИЯ -->
+<section id="c4" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Анализ окружения</div>
+    <h2 class="s-title">Что формирует<br>микроклимат Летово</h2>
+    <p class="s-lead">Четыре ключевых фактора, которые определяют ветровую обстановку на территории</p>
+    <div class="context-wrap">
+      <div class="factors-list">
+        <div class="factor-card">
+          <div class="factor-num">1</div>
+          <div class="factor-body">
+            <div class="factor-name">Открытые пространства с юга и запада</div>
+            <div class="factor-desc">Прямая экспозиция на кварталы 7, 8, 9. Эти кварталы работают как ветровой щит для центральной части территории. Доминирующее направление — западное (8–10% времени), южное (6–7%) и юго-западное (5–6%).</div>
+          </div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num">2</div>
+          <div class="factor-body">
+            <div class="factor-name">Плотная периметральная застройка</div>
+            <div class="factor-desc">Создаёт аэродинамическую тень — зону пониженных скоростей ветра в центре территории. Эффективно гасит основные ветровые нагрузки без дополнительной защиты в кварталах 3, 4, 5, 6.</div>
+          </div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num">3</div>
+          <div class="factor-body">
+            <div class="factor-name">Диагональная ориентация улиц (45°)</div>
+            <div class="factor-desc">Образует транзитные коридоры для диагональных ветров (СВ–ЮЗ, СЗ–ЮВ): обеспечивает вентиляцию, но создаёт локальные ускорения вдоль магистралей.</div>
+          </div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num">4</div>
+          <div class="factor-body">
+            <div class="factor-name">Водоём с восточной стороны</div>
+            <div class="factor-desc">Восточный фронт получает более быстрый ветровой поток из-за меньшей шероховатости поверхности. Влияет на кварталы 3, 9 при северо-восточных и восточных ветрах.</div>
+          </div>
+        </div>
+      </div>
+      <div class="quarters-wrap">
+        <div class="quarters-title">Схема 9 кварталов Летово</div>
+        <svg class="quarters-grid-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <defs><style>.q-label{font-family:'Onest',sans-serif;font-size:13px;font-weight:600;fill:#1b1d24}.q-sub{font-family:'Onest',sans-serif;font-size:9px;fill:#3e4455}</style></defs>
+          <text x="150" y="18" text-anchor="middle" font-family="Onest,sans-serif" font-size="10" fill="#3e4455">С</text>
+          <rect x="20"  y="30"  width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="1.5"/>
+          <text x="60"  y="68"  text-anchor="middle" class="q-label">1</text>
+          <text x="60"  y="84"  text-anchor="middle" class="q-sub">ВЫСОКИЙ</text>
+          <rect x="110" y="30"  width="80" height="80" rx="8" fill="#fff8f0" stroke="#e8c49a" stroke-width="1.5"/>
+          <text x="150" y="68"  text-anchor="middle" class="q-label">2</text>
+          <text x="150" y="84"  text-anchor="middle" class="q-sub">СРЕДНИЙ</text>
+          <rect x="200" y="30"  width="80" height="80" rx="8" fill="#edfaf8" stroke="#2ab6a5" stroke-width="1.5"/>
+          <text x="240" y="68"  text-anchor="middle" class="q-label">6</text>
+          <text x="240" y="84"  text-anchor="middle" class="q-sub">ОТКРЫТО</text>
+          <rect x="20"  y="120" width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="1.5"/>
+          <text x="60"  y="158" text-anchor="middle" class="q-label">7</text>
+          <text x="60"  y="174" text-anchor="middle" class="q-sub">ВЫСОКИЙ</text>
+          <rect x="110" y="120" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="150" y="158" text-anchor="middle" class="q-label">3</text>
+          <text x="150" y="174" text-anchor="middle" class="q-sub">НИЗКИЙ</text>
+          <rect x="200" y="120" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="240" y="158" text-anchor="middle" class="q-label">5</text>
+          <text x="240" y="174" text-anchor="middle" class="q-sub">НИЗКИЙ</text>
+          <rect x="20"  y="210" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="60"  y="248" text-anchor="middle" class="q-label">4</text>
+          <text x="60"  y="264" text-anchor="middle" class="q-sub">НИЗКИЙ</text>
+          <rect x="110" y="210" width="80" height="80" rx="8" fill="#fff8f0" stroke="#e8c49a" stroke-width="1.5"/>
+          <text x="150" y="248" text-anchor="middle" class="q-label">8</text>
+          <text x="150" y="264" text-anchor="middle" class="q-sub">СРЕДНИЙ</text>
+          <rect x="200" y="210" width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="1.5"/>
+          <text x="240" y="248" text-anchor="middle" class="q-label">9</text>
+          <text x="240" y="264" text-anchor="middle" class="q-sub">ВЫСОКИЙ</text>
+        </svg>
+        <div class="q-legend">
+          <div class="q-legend-item"><div class="q-dot" style="background:#6366f1"></div>Высокий приоритет защиты (1, 7, 9)</div>
+          <div class="q-legend-item"><div class="q-dot" style="background:#e8a45a"></div>Средний приоритет (2, 8)</div>
+          <div class="q-legend-item"><div class="q-dot" style="background:#5e6779"></div>Низкий приоритет (3, 4, 5)</div>
+          <div class="q-legend-item"><div class="q-dot" style="background:#2ab6a5"></div>Квартал 6 — открытые террасы</div>
+        </div>
+      </div>
+    </div>
+    <div class="cfd-genplan-wrap">
+      <div class="cfd-genplan-label">Генплан — территория исследования</div>
+      <img src="img_clima/image8.png" alt="Генплан ЖК Летово" loading="lazy" class="cfd-genplan-img">
+    </div>
+  </div>
+</section>
+
+<!-- C5 СВОДНАЯ ТАБЛИЦА -->
+<section id="c5" class="section">
+  <div class="s-tag">Итоговая оценка</div>
+  <h2 class="s-title">Результаты<br>по уровням</h2>
+  <p class="s-lead">Полная картина ветрового комфорта на трёх высотных уровнях — от пешеходной зоны до высоких террас</p>
+  <div class="result-table-wrap">
+    <table class="result-table">
+      <thead>
+        <tr><th>Уровень</th><th>Параметр</th><th>Статус</th><th>Кварталы / зоны</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-level" rowspan="3">Пешеходный<br>1,5 м</td>
+          <td>Общий комфорт</td>
+          <td><span class="status-badge status-ok">Комфортно</span></td>
+          <td class="td-areas">80% территории — 0–2 балла по шкале Бофорта при всех 8 направлениях ветра</td>
+        </tr>
+        <tr>
+          <td>Локальные ускорения (4–6 м/с)</td>
+          <td><span class="status-badge status-warn">Локальные зоны</span></td>
+          <td class="td-areas">Кварталы 1, 2, 3, 7, 9 — внутренние дворы, входные группы, фасады</td>
+        </tr>
+        <tr>
+          <td>Зоны застоя воздуха</td>
+          <td><span class="status-badge status-risk">Риск духоты</span></td>
+          <td class="td-areas">Кварталы 6, 7, 9 — штили до 35% времени летом</td>
+        </tr>
+        <tr>
+          <td class="td-level" rowspan="2">Террасы<br>25 м</td>
+          <td>Квартал 6</td>
+          <td><span class="status-badge status-open">Открытые террасы</span></td>
+          <td class="td-areas">Защищён при всех направлениях ветра, открытые террасы возможны со всех сторон</td>
+        </tr>
+        <tr>
+          <td>Периметральные кварталы 1, 2, 3, 7, 8, 9</td>
+          <td><span class="status-badge status-warn">Требует защиты</span></td>
+          <td class="td-areas">Порывы до 6,0 м/с на наветренных фасадах. Полупроницаемая ветрозащита 30–50%</td>
+        </tr>
+        <tr>
+          <td class="td-level" rowspan="2">Террасы<br>50 м</td>
+          <td>Наветренные стороны (кв. 1, 7, 8, 9)</td>
+          <td><span class="status-badge status-risk">Требует защиты</span></td>
+          <td class="td-areas">Сильные ветры 5–5,5 м/с, 25–30% времени года. Ориентации С, СЗ, З, ЮЗ, Ю</td>
+        </tr>
+        <tr>
+          <td>Квартал 6 (50 м)</td>
+          <td><span class="status-badge status-open">Открытые террасы</span></td>
+          <td class="td-areas">Возможно размещение открытых террас без дополнительной защиты</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- C6 ПЕШЕХОДНЫЙ УРОВЕНЬ -->
+<section id="c6" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Пешеходный уровень · 1,5 м</div>
+    <h2 class="s-title">Детальные результаты:<br>пешеходная зона</h2>
+    <p class="s-lead">Ветровая обстановка на высоте 1,5 м — основной уровень жизни на территории: дорожки, дворы, входные группы, общественные пространства</p>
+    <div class="clima-maps-grid">
+      <div class="clima-map-item">
+        <div class="clima-map-label">Шкала Бофорта 1,5 м — общая картина</div>
+        <img src="img_clima/image9.png" alt="CFD: шкала Бофорта на уровне 1,5 м" loading="lazy" class="clima-map-img">
+      </div>
+      <div class="clima-map-item">
+        <div class="clima-map-label">Streamlines — средняя скорость ветра</div>
+        <img src="img_clima/image10.png" alt="CFD: линии тока ветра, средняя скорость" loading="lazy" class="clima-map-img">
+      </div>
+      <div class="clima-map-item">
+        <div class="clima-map-label">Порывы — западный ветер</div>
+        <img src="img_clima/image13.png" alt="CFD: порывы ветра на уровне 1,5 м" loading="lazy" class="clima-map-img">
+      </div>
+      <div class="clima-map-item">
+        <div class="clima-map-label">Streamlines — западный ветер</div>
+        <img src="img_clima/image14.png" alt="CFD: линии тока, западный ветер" loading="lazy" class="clima-map-img">
+      </div>
+    </div>
+    <div class="accordion-list">
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Итог 01</div>
+            <div class="acc-head-title">80% территории комфортны</div>
+            <div class="acc-head-sub">Пешеходный каркас территории в целом комфортен — локальные зоны риска можно донастроить без пересмотра мастер-плана целиком</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <div class="stat-callout">
+            <div class="stat-callout-val">&gt;80%</div>
+            <div class="stat-callout-text">территории при всех 8 направлениях ветра находится в диапазоне 0–2 баллов по шкале Бофорта — это штиль или слабый ветер (до 3,3 м/с), не создающий дискомфорта</div>
+          </div>
+          <p class="acc-body-text">Грамотное планировочное решение на этапе мастер-плана исключает необходимость в масштабных и дорогостоящих мерах дополнительной защиты. Текущая конфигурация зданий эффективно гасит основные ветровые нагрузки.</p>
+          <p class="acc-body-text">Плотная периметральная застройка создаёт аэродинамическую тень — в центральной части территории (кварталы 3, 4, 5, 6) скорости ветра значительно снижены без каких-либо дополнительных мер.</p>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Итог 02</div>
+            <div class="acc-head-title">Локальные ускорения в кварталах 1, 2, 3, 7, 9</div>
+            <div class="acc-head-sub">Выявлены зоны повышенных скоростей ветра 4–6 м/с. Точечные меры позволяют устранить дискомфорт без масштабных переделок</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <div class="zones-grid">
+            <div class="zone-card"><div class="zone-q">Квартал 1</div><div class="zone-detail">Внутренние дворы при ветрах: С, СВ, З, ЮЗ. Наветренные фасады — порывы до 4–5,5 м/с</div></div>
+            <div class="zone-card"><div class="zone-q">Квартал 7</div><div class="zone-detail">Дворы при ветрах: Ю, ЮЗ, З. Входы и проезды с наветренной стороны</div></div>
+            <div class="zone-card"><div class="zone-q">Квартал 9</div><div class="zone-detail">Дворы при ветрах: Ю, ЮВ, В. Ускорение у угловых фасадов</div></div>
+            <div class="zone-card"><div class="zone-q">Квартал 2</div><div class="zone-detail">Северные входы и проезды при ветрах С, СВ</div></div>
+            <div class="zone-card"><div class="zone-q">Квартал 3</div><div class="zone-detail">Восточные фасады при ветрах СВ, В — возможное влияние водоёма</div></div>
+            <div class="zone-card"><div class="zone-q">Общий вывод</div><div class="zone-detail">Зоны ускорений точечны и предсказуемы — устраняются без пересмотра мастер-плана</div></div>
+          </div>
+          <div class="mini-label">Рекомендуемые меры</div>
+          <ul class="rec-list">
+            <li>Скамейки с высокими спинками (1,2–1,5 м) в зонах отдыха</li>
+            <li>Кустарники и живые изгороди вдоль наветренных фасадов и проездов</li>
+            <li>Тамбуры и козырьки у входных групп с наветренных сторон (кв. 1, 2, 7, 8, 9)</li>
+            <li>Перголы во дворах кварталов с повторяющимися ускорениями</li>
+          </ul>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Итог 03</div>
+            <div class="acc-head-title">Зоны застоя воздуха в кварталах 6, 7, 9</div>
+            <div class="acc-head-sub">В тёплый период приоритет смещается с ветрозащиты на проветриваемость. 34,7% — доля штилей в летний период</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <div class="stat-callout">
+            <div class="stat-callout-val">34,7%</div>
+            <div class="stat-callout-text">доля штилей в летний период. Преобладают слабые ветры 1–2 м/с (59,5%). Доминирующее направление — северное (9,6%). Жители могут испытывать ощущение духоты</div>
+          </div>
+          <p class="acc-body-text">В кварталах 6, 7 и 9 возможна недостаточная естественная вентиляция дворовых пространств. Это снижает ценность благоустроенных общественных пространств в жаркую погоду.</p>
+          <div class="mini-label">Рекомендуемое решение</div>
+          <div class="rec-callout"><b>Высадка высоких лиственных деревьев</b> — «захватывают» активные потоки воздуха с верхних уровней и направляют их вниз, в зону пребывания людей. Обеспечивают свежесть в дворовых пространствах в тёплый период</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C7 ТЕРРАСЫ -->
+<section id="c7" class="section">
+  <div class="s-tag">Уровень террас</div>
+  <h2 class="s-title">Ветровой режим<br>на высоте 25 м и 50 м</h2>
+  <p class="s-lead">Высокие террасы требуют особого внимания: скорости ветра на порядок выше, чем на уровне земли, и создают риски дискомфорта и опасности</p>
+  <div class="terraces-grid">
+    <div class="terrace-card">
+      <div class="terrace-head">
+        <div class="terrace-level">Уровень 25 м · Низкие террасы</div>
+        <div class="terrace-title">Квартал 6 защищён.<br>Периметр требует защиты</div>
+        <div class="terrace-wind">до 6,0 м/с</div>
+        <div class="terrace-wind-sub">порывы на наветренных фасадах периметра</div>
+      </div>
+      <div class="terrace-img-wrap">
+        <img src="img_clima/image11.png" alt="CFD: порывы ветра на уровне 25 м" loading="lazy" class="terrace-img">
+      </div>
+      <div class="terrace-body">
+        <div class="terrace-zones">
+          <div class="terrace-zone open-ok"><div class="tz-name">Квартал 6 — открытые террасы без ограничений</div><div class="tz-desc">Защищён при всех направлениях ветра. Открытые террасы возможны со всех сторон без дополнительных мер.</div></div>
+          <div class="terrace-zone needs-prot"><div class="tz-name">Кварталы 1, 2, 3, 7, 8, 9 — требуется ветрозащита</div><div class="tz-desc">Скорость порывов 4–5,5 м/с на наветренных фасадах. Возможен унос лёгких предметов, ощущение «постоянного продувания».</div></div>
+        </div>
+        <div class="terrace-rec-label">Рекомендация</div>
+        <div class="terrace-rec-text">На наветренных фасадах периметральных кварталов установить полупроницаемую ветрозащиту пористостью <b>30–50%</b>: перфорированные экраны, вертикальное озеленение (туи, сетки с вьющимися растениями).</div>
+      </div>
+    </div>
+    <div class="terrace-card">
+      <div class="terrace-head">
+        <div class="terrace-level">Уровень 50 м · Высокие террасы</div>
+        <div class="terrace-title">Сильные ветры 25–30%<br>времени года</div>
+        <div class="terrace-wind">5,0–5,5 м/с</div>
+        <div class="terrace-wind-sub">преобладающие скорости 25–30% времени</div>
+      </div>
+      <div class="terrace-img-wrap">
+        <img src="img_clima/image12.png" alt="CFD: порывы ветра на уровне 50 м" loading="lazy" class="terrace-img">
+      </div>
+      <div class="terrace-body">
+        <div class="terrace-zones">
+          <div class="terrace-zone needs-prot"><div class="tz-name">Наветренные стороны кв. 1, 7, 8, 9</div><div class="tz-desc">Ориентации С, СЗ, З, ЮЗ, Ю. Опасность для детей и пожилых людей (потеря равновесия при внезапном порыве). Риск сноса незакреплённых предметов.</div></div>
+          <div class="terrace-zone open-ok"><div class="tz-name">Квартал 6 на 50 м — открытые террасы</div><div class="tz-desc">Возможно размещение открытых террас без дополнительной ветрозащиты.</div></div>
+        </div>
+        <div class="terrace-rec-label">Рекомендация</div>
+        <div class="terrace-rec-text">Обязательная установка полупроницаемой ветрозащиты на всех наветренных террасах (ориентация С, СЗ, З, ЮЗ, Ю в кварталах 1, 7, 8, 9). Рекомендуемая пористость <b>30–50%</b> — перфорированные экраны, решётки с растениями.</div>
+      </div>
+    </div>
+    <div class="terrace-detail-grid">
+      <div>
+        <div class="terrace-detail-label">Детальный вид — западный ветер, 25 м</div>
+        <img src="img_clima/image15.png" alt="CFD террасы: западный ветер, детально" loading="lazy" class="terrace-detail-img">
+      </div>
+      <div>
+        <div class="terrace-detail-label">Детальный вид — другой ракурс</div>
+        <img src="img_clima/image16.png" alt="CFD террасы: детальный вид" loading="lazy" class="terrace-detail-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C8 ПРИОРИТЕТЫ -->
+<section id="c8" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Рекомендации</div>
+    <h2 class="s-title">Приоритеты защиты<br>по кварталам</h2>
+    <p class="s-lead">Кварталы ранжированы по степени необходимости ветрозащитных мероприятий. Высокий приоритет — обязательная защита на нескольких фасадах</p>
+    <div class="priority-wrap">
+      <div class="priority-list">
+        <div class="priority-group">
+          <div class="priority-group-label" style="color:#e05a3a"><div class="prio-dot prio-high"></div>Высокий приоритет</div>
+          <div class="priority-items">
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 1</div><div class="prio-pct">~20–25% времени года</div></div>
+              <div class="prio-desc">Север, запад, северо-запад. Требуется ветрозащита на 3 фасадах на уровнях 25 м и 50 м.</div>
+              <div class="prio-measures">Тамбуры у входов, перголы во дворах, экраны 30–50% на террасах</div>
+            </div>
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 7</div><div class="prio-pct">~20–25% времени года</div></div>
+              <div class="prio-desc">Юг, юго-запад, запад. Требуется ветрозащита на 3 фасадах.</div>
+              <div class="prio-measures">Тамбуры у входов, перголы во дворах, обязательная ветрозащита 50 м</div>
+            </div>
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 9</div><div class="prio-pct">~12–16% времени года</div></div>
+              <div class="prio-desc">Юг, юго-восток, восток. Влияние водоёма — ускорение ветрового потока.</div>
+              <div class="prio-measures">Ветрозащита на 3 высотных уровнях, детальный расчёт в следующем этапе</div>
+            </div>
+          </div>
+        </div>
+        <div class="priority-group">
+          <div class="priority-group-label" style="color:#c07a30"><div class="prio-dot prio-medium"></div>Средний приоритет</div>
+          <div class="priority-items">
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 2</div><div class="prio-pct">~15–18% времени года</div></div>
+              <div class="prio-desc">Север, северо-восток, северо-запад. Требуется защита на 2–3 фасадах.</div>
+            </div>
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 8</div><div class="prio-pct">~10–12% времени года</div></div>
+              <div class="prio-desc">Юг, юго-восток. Требуется защита на 2 фасадах в уровнях 25 м и 50 м.</div>
+            </div>
+          </div>
+        </div>
+        <div class="priority-group">
+          <div class="priority-group-label" style="color:#2ab6a5"><div class="prio-dot prio-low"></div>Низкий приоритет / особый случай</div>
+          <div class="priority-items">
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Кварталы 3, 4, 5</div><div class="prio-pct">минимальные меры защиты</div></div>
+              <div class="prio-desc">Центральные кварталы в аэродинамической тени периметра. Стандартные средовые решения без дополнительной ветрозащиты.</div>
+            </div>
+            <div class="prio-item">
+              <div class="prio-item-head"><div class="prio-q">Квартал 6</div><div class="prio-pct">приоритет — вентиляция</div></div>
+              <div class="prio-desc">Защищён со всех сторон. Открытые террасы без ограничений. Приоритет — вентиляция дворов: высокие деревья, водные элементы.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="priority-grid-cont">
+        <div class="priority-grid-title">Расчётные кварталы следующего этапа</div>
+        <svg viewBox="0 0 300 320" style="width:100%;max-width:300px" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20"  y="20"  width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="2"/>
+          <text x="60"  y="58"  text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">1</text>
+          <text x="60"  y="80"  text-anchor="middle" font-family="Onest,sans-serif" font-size="9" fill="#3e4455">РАСЧЁТ ▶</text>
+          <rect x="110" y="20"  width="80" height="80" rx="8" fill="#fff8f0" stroke="#e8c49a" stroke-width="1.5"/>
+          <text x="150" y="58"  text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">2</text>
+          <rect x="200" y="20"  width="80" height="80" rx="8" fill="#edfaf8" stroke="#2ab6a5" stroke-width="2"/>
+          <text x="240" y="58"  text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">6</text>
+          <text x="240" y="80"  text-anchor="middle" font-family="Onest,sans-serif" font-size="9" fill="#2ab6a5">РАСЧЁТ ▶</text>
+          <rect x="20"  y="110" width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="2"/>
+          <text x="60"  y="148" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">7</text>
+          <text x="60"  y="170" text-anchor="middle" font-family="Onest,sans-serif" font-size="9" fill="#3e4455">РАСЧЁТ ▶</text>
+          <rect x="110" y="110" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="150" y="148" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">3</text>
+          <rect x="200" y="110" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="240" y="148" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">5</text>
+          <rect x="20"  y="200" width="80" height="80" rx="8" fill="#f4f6f9" stroke="#e2e5ec" stroke-width="1.5"/>
+          <text x="60"  y="238" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">4</text>
+          <rect x="110" y="200" width="80" height="80" rx="8" fill="#fff8f0" stroke="#e8c49a" stroke-width="1.5"/>
+          <text x="150" y="238" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">8</text>
+          <rect x="200" y="200" width="80" height="80" rx="8" fill="#eef0ff" stroke="#6366f1" stroke-width="2"/>
+          <text x="240" y="238" text-anchor="middle" font-family="Onest,sans-serif" font-size="24" font-weight="600" fill="#1b1d24">9</text>
+          <text x="240" y="260" text-anchor="middle" font-family="Onest,sans-serif" font-size="9" fill="#3e4455">РАСЧЁТ ▶</text>
+          <text x="150" y="305" text-anchor="middle" font-family="Onest,sans-serif" font-size="10" fill="#3e4455">Кварталы 1, 7, 9, 6 — детальный расчёт</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C9 РЕЗЮМЕ -->
+<section id="c9" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Резюме</div>
+    <h2 class="s-title">Выводы и<br>следующий шаг</h2>
+    <p class="s-lead">Анализ этапа мастер-плана завершён. Получены данные для всех 9 кварталов на трёх уровнях высот. Следующий шаг — верификация конкретных архитектурных решений</p>
+    <div class="summary-grid">
+      <div class="summary-block">
+        <div class="summary-block-label">Ключевые выводы</div>
+        <div class="summary-items">
+          <div class="summary-item">80% пешеходной территории комфортны при всех 8 направлениях ветра</div>
+          <div class="summary-item">Мастер-план не требует масштабного пересмотра — зоны риска точечны</div>
+          <div class="summary-item">Квартал 6 полностью защищён — открытые террасы на всех уровнях</div>
+          <div class="summary-item">Кварталы 1, 7, 9 — приоритетные зоны для ветрозащиты террас</div>
+          <div class="summary-item">В кварталах 6, 7, 9 в тёплый период — приоритет вентиляции, не защиты</div>
+        </div>
+      </div>
+      <div class="summary-block">
+        <div class="summary-block-label">Рекомендации</div>
+        <div class="summary-items">
+          <div class="summary-item">Полупроницаемая ветрозащита 30–50% на террасах периметральных кварталов</div>
+          <div class="summary-item">Высокие лиственные деревья во дворах кварталов 6, 7, 9 — вентиляция в жару</div>
+          <div class="summary-item">Тамбуры и козырьки у входных групп кварталов 1, 2, 7, 8, 9</div>
+          <div class="summary-item">Снижение ветрозащиты на 30–50%: уменьшение нагрузок на фасады и конструкции</div>
+        </div>
+      </div>
+    </div>
+    <div class="next-step">
+      <div class="next-step-label">Следующий шаг</div>
+      <div class="next-step-title">Верификация архитектурных решений<br>по ветрозащите</div>
+      <div class="next-step-text">Выбраны кварталы-представители для детального расчёта на трёх высотных уровнях (1,5 м / 25 м / 50 м). Цель — зафиксировать оптимальные параметры ветрозащиты и вентиляции. Результаты лягут в основу разработки проектной документации.</div>
+      <div class="next-quarters">
+        <div class="nq-pill"><strong>Квартал 1</strong><span>Ветрозащита на 3 фасадах</span></div>
+        <div class="nq-pill"><strong>Квартал 7</strong><span>Ветрозащита на 3 фасадах</span></div>
+        <div class="nq-pill"><strong>Квартал 9</strong><span>Ветрозащита + водоём</span></div>
+        <div class="nq-pill" style="background:rgba(42,182,165,.1);border-color:rgba(42,182,165,.4)"><strong>Квартал 6</strong><span>Вентиляция дворов</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ════════════════════
+     TAB 3 — ЦИФРОВОЙ ДВОЙНИК
+════════════════════ -->
+<div id="tab-digital" class="tab-panel active">
+
+<!-- S1 HERO -->
+<section id="s1">
+  <canvas id="hero-canvas-d"></canvas>
+  <div class="hero-wrap">
+    <div class="hero-eyebrow">А101 · Летово · Цифровой двойник среды</div>
+    <h1 class="hero-title">
+      Инструмент снижения затрат,<br>минимизации рисков<br>и <em>создания</em> востребованного продукта
+    </h1>
+    <p class="hero-sub">
+      Цифровой двойник среды — это моделирование будущей повседневности жителей.
+      Двойник позволяет заранее увидеть, какие решения востребованы, какие создают
+      лишние затраты и где возникают риски несогласованности между департаментами
+    </p>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="hero-card-num">01</div>
+        <div class="hero-card-title">Снизить затраты</div>
+        <div class="hero-card-text">Делать только то, что действительно нужно продукту</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-num">02</div>
+        <div class="hero-card-title">Снизить риск переделок</div>
+        <div class="hero-card-text">Раньше видеть конфликты между решениями департаментов</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-num">03</div>
+        <div class="hero-card-title">Усилить продукт</div>
+        <div class="hero-card-text">Создавать комфортную, функциональную, востребованную среду</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Далее</span><div class="scroll-arr"></div></div>
+</section>
+
+<!-- S2 ТРИ ЗАДАЧИ -->
+<section id="s2" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Задачи девелопера · 2026+</div>
+    <h2 class="s-title">На ближайшие 3 года<br>перед девелопером стоят 3 задачи</h2>
+    <p class="s-lead">Снижать затраты, минимизировать риски переделок и создавать качественный востребованный продукт малозатратным образом. Цифровой двойник помогает решать все три задачи одновременно</p>
+    <div class="accordion-list">
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Задача 01</div>
+            <div class="acc-head-title">Снизить затраты</div>
+            <div class="acc-head-sub">Снизить затраты — значит делать только то, что действительно требуется продукту и будет востребовано в повседневном использовании</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <p class="acc-body-text">Это касается не только материалов или стоимости работ. Это касается самой необходимости решений: где нужны дорожки, какой ширины они должны быть, какие маршруты действительно будут использоваться, где требуется благоустройство, где нужна та или иная функция, а где она появится физически, но не будет функциональной.</p>
+          <div class="acc-example">
+            <div class="acc-example-label">Пример</div>
+            Дорожки должны появляться не там, где они красиво смотрятся на схеме, а там, где они работают как востребованные маршруты. Их ширина, количество и направление должны соответствовать реальному пешеходному потоку, а не только композиционной идее мастер-плана.
+          </div>
+          <div class="mini-block">
+            <div class="mini-label">Смысл для девелопера</div>
+            <div class="mini-text">Не закладывать лишнее, не внедрять неработающие элементы среды, проверять решения заранее, чтобы не тратить бюджет на то, что не даёт продуктовой ценности.</div>
+          </div>
+          <div class="mini-block">
+            <div class="mini-label">Что проверяет цифровой двойник</div>
+            <div class="mini-text">Где маршруты действительно нужны, какие связи будут востребованы, где возможно избыточное благоустройство, а где потребуется усиление маршрута и организация аттракторов.</div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Задача 02</div>
+            <div class="acc-head-title">Снизить затраты на переделки</div>
+            <div class="acc-head-sub">Есть затраты другой природы — затраты на переделки. Они возникают, когда конфликт между решениями разных департаментов становится виден слишком поздно</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <p class="acc-body-text">Один департамент закладывает наружные сети раньше, чем другой проектирует озеленение. Третий отвечает за коммерческую инфраструктуру, четвёртый располагает общественные места. Каждый работает в своей области, но синхронизация возникает не всегда. Качественная среда возникает из согласованной работы всех её элементов. Когда согласованности нет, появляются риски:</p>
+          <ul class="conflict-list">
+            <li>деревья нельзя посадить из-за наружных сетей</li>
+            <li>коммерция оказывается в медвежьем углу</li>
+            <li>транзит как кратчайший путь идёт через открытый приватный двор</li>
+            <li>летняя терраса у кафе конфликтует с высокоплотным потоком людей</li>
+            <li>спортивная площадка не работает из-за порывистого ветра</li>
+          </ul>
+          <div class="mini-block">
+            <div class="mini-label">Смысл для девелопера</div>
+            <div class="mini-text">Чем позже обнаружен конфликт, тем дороже его исправлять. Цифровой двойник позволяет увидеть такие риски раньше и перевести их в управляемые проектные задачи.</div>
+          </div>
+          <div class="mini-block">
+            <div class="mini-label">Управление затратами будущих периодов</div>
+            <div class="mini-text">Переделка почти всегда дороже ранней корректировки: уже приняты решения, согласованы разделы, выданы задания, сформированы ожидания, а иногда начаты закупки или строительство.</div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-head">
+          <div class="acc-head-left">
+            <div class="acc-tag">Задача 03</div>
+            <div class="acc-head-title">Усилить качество продукта</div>
+            <div class="acc-head-sub">Качество продукта — это тоже деньги. Оно влияет на ценность квадратного метра, скорость продаж, доверие к проекту и репутацию девелопера</div>
+          </div>
+          <div class="acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-separator"></div>
+          <p class="acc-body-text">На качество продукта влияет продуманность на предмет реализации сценариев — инженерно-средовой подход, который применяется при проектировании и в результате которого получается среда с продуманной жизнью её будущих жителей.</p>
+          <div class="mini-block">
+            <div class="mini-label">Смысл для девелопера</div>
+            <div class="mini-text">Комфорт, удобство, функциональность и востребованность среды влияют на привлекательность продукта, доверие покупателя, обоснованность стоимости квадратного метра, скорость продаж, бренд и репутацию девелопера.</div>
+          </div>
+          <div class="mini-block">
+            <div class="mini-label">Что проверяет цифровой двойник</div>
+            <div class="mini-text">Позволяет смотреть на территорию через оптику пользователя среды: не только как на мастер-план, а как на будущую повседневность, где климат, маршруты, функции, инфраструктура, приватность и эксплуатация работают вместе.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3 ГДЕ ВОЗНИКАЮТ ЗАТРАТЫ -->
+<section id="s3" class="section">
+  <div class="s-tag">Причины затрат</div>
+  <h2 class="s-title">Где возникают затраты<br>и потеря качества</h2>
+  <p class="s-lead">Многие проектные проблемы выглядят как мелочи, но именно из них складываются переделки, эксплуатационные сложности и снижение качества продукта. Цифровой двойник позволяет увидеть эти пересечения до строительства</p>
+  <div class="chain-wrap">
+    <div class="chain">
+      <div class="chain-step">
+        <div class="chain-step-num">01</div>
+        <div class="chain-step-title">Мастер-план</div>
+        <div class="chain-step-sub">Мелочь на схеме: кажется несущественной</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-step-num">02</div>
+        <div class="chain-step-title">Проектирование</div>
+        <div class="chain-step-sub">Конфликт между решениями разных департаментов</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-step-num">03</div>
+        <div class="chain-step-title">Строительство</div>
+        <div class="chain-step-sub">Переделка: дорого, поздно, уже согласовано</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-step-num">04</div>
+        <div class="chain-step-title">Эксплуатация</div>
+        <div class="chain-step-sub">Жалоба жителей, ухудшение репутации</div>
+      </div>
+      <div class="chain-step" style="background:rgba(42,182,165,.07);border-right:none">
+        <div class="chain-step-num" style="color:var(--teal)">✓</div>
+        <div class="chain-step-title" style="color:var(--teal)">С двойником</div>
+        <div class="chain-step-sub">Виден на этапе мастер-плана → управляемая задача</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 8 ПРИМЕРОВ -->
+<section id="s4" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Примеры ситуаций</div>
+    <h2 class="s-title">Примеры интеграции продуктовых атрибутов<br>и качества продукта</h2>
+    <p class="s-lead">Ниже — примеры задач, которые выглядят как мелочи, но позже становятся затратами, переделками, компромиссами или снижением качества продукта</p>
+    <div class="cards-grid" id="ex-grid"></div>
+  </div>
+</section>
+
+<!-- S5 ЧТО ДАЁТ ДВОЙНИК -->
+<section id="s5" class="section">
+  <div class="s-tag">Возможности</div>
+  <h2 class="s-title">Что позволяет сделать<br>цифровой двойник</h2>
+  <div class="layers-wrap">
+    <div class="layers-text">
+      <p class="s-lead" style="margin-bottom:0">На этапе концепции и мастер-плана можно уже увидеть, как будет работать территория: где формируется ветер, где будет палящее солнце, как сложится передвижение жителей, какими будут маршруты и плотность потоков</p>
+      <div class="layers-key">
+        Мы создаём цифровую модель <span>будущей повседневной жизни</span> территории и можем оценить, какие продуктовые атрибуты среды действительно будут работать
+      </div>
+      <div class="mini-block">
+        <div class="mini-label">Что это меняет</div>
+        <div class="mini-text">Сегодня многие решения существуют в отчётах, записках, чертежах и проектной документации. Цифровой двойник интегрирует их различными слоями. Команда видит не только то, что запроектировано, но и то, как это может работать в повседневности.</div>
+      </div>
+    </div>
+    <div>
+      <div class="layer-scheme">
+        <div class="layer-item"><div class="layer-icon">🏙</div><div class="layer-name">Планировочный каркас</div></div>
+        <div class="layer-item"><div class="layer-icon">🚶</div><div class="layer-name">Пешеходные потоки и маршруты</div></div>
+        <div class="layer-item"><div class="layer-icon">🌬</div><div class="layer-name">Климат: ветер, солнце, перегрев</div></div>
+        <div class="layer-item"><div class="layer-icon">🏪</div><div class="layer-name">Коммерция: трафик, видимость</div></div>
+        <div class="layer-item"><div class="layer-icon">🌳</div><div class="layer-name">Благоустройство и биоразнообразие</div></div>
+        <div class="layer-item"><div class="layer-icon">⚙️</div><div class="layer-name">Наружные сети и эксплуатация</div></div>
+        <div class="layer-result">= цифровая модель будущей повседневности</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 ТЕХНОЛОГИЯ -->
+<section id="s6" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Технологическое решение</div>
+    <h2 class="s-title">Два связанных направления<br>и их интеграция</h2>
+    <p class="s-lead">Мы предлагаем развивать работу через два инструмента, которые вместе формируют полноценный цифровой двойник жилой среды</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-head">
+          <div class="tech-pill clima">Clima Zoom</div>
+          <div class="tech-title">Климатический цифровой двойник территории</div>
+          <div class="tech-desc">Анализ ветра, солнца, перегрева, затенения, климатического комфорта и климатической пригодности сценариев жизнедеятельности.</div>
+        </div>
+        <div class="tech-card-body">
+          <div class="tech-check-label">Что можно проверять</div>
+          <div class="tech-checks">
+            <div class="tech-check-item">Ветровой комфорт дворов, входных групп, маршрутов</div>
+            <div class="tech-check-item">Детские площадки, спортивные зоны, общественные пространства</div>
+            <div class="tech-check-item">Летние террасы, зоны отдыха и места длительного пребывания</div>
+          </div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-head">
+          <div class="tech-pill flow">Flow Zoom</div>
+          <div class="tech-title">Цифровой двойник пешеходных потоков</div>
+          <div class="tech-desc">Анализ маршрутов, интенсивности движения, транзита, точек притяжения, медвежьих углов, работы первых этажей, доступности сервисов.</div>
+        </div>
+        <div class="tech-card-body">
+          <div class="tech-check-label">Что можно проверять</div>
+          <div class="tech-checks">
+            <div class="tech-check-item">Как жители будут перемещаться по территории</div>
+            <div class="tech-check-item">Где возникнет транзит через двор и где не хватит трафика для коммерции</div>
+            <div class="tech-check-item">Где высокая плотность потока конфликтует с тихой зоной</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tech-integration">
+      <div class="tech-integration-title">Интеграция Clima Zoom и Flow Zoom</div>
+      <div class="tech-integration-text">Главная ценность возникает при совместном анализе климата, потоков и сценариев жизнедеятельности. Можно увидеть не только то, что место есть, но и то, будет ли оно работать: есть ли там поток, комфортно ли там находиться, не слишком ли ветрено, не слишком ли жарко, не конфликтует ли сценарий с маршрутом, двором, коммерцией или эксплуатацией.</div>
+      <div class="tech-integration-expand">
+        <b style="color:var(--text)">Примеры связок для проверки:</b> летняя терраса и поток людей · детская площадка и солнцепёк · настольный теннис и ветер · коммерция и трафик · тихая зона и транзит
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 УЧАСТНИКИ -->
+<section id="s7" class="section">
+  <div class="s-tag">Совместная работа</div>
+  <h2 class="s-title">Цифровой двойник не заменяет участников —<br>он синхронизирует их вокруг продукта</h2>
+  <p class="s-lead">Можно работать с уже существующим списком задач девелопера или провести интервью с участниками процесса и выявить новые задачи — а затем перевести их в гипотезы и проверить в цифровом двойнике</p>
+  <div class="team-center">
+    <div class="team-hub">
+      <div class="team-pill">продукт</div>
+      <div class="team-pill-center">Цифровой двойник среды</div>
+      <div class="team-pill">архитекторы</div>
+      <div class="team-pill">инженеры</div>
+      <div class="team-pill">наружные сети</div>
+      <div class="team-pill">благоустройство</div>
+      <div class="team-pill">коммерция</div>
+      <div class="team-pill">ESG</div>
+      <div class="team-pill">эксплуатация</div>
+      <div class="team-pill">маркетинг</div>
+      <div class="team-pill">социологи</div>
+    </div>
+    <ul class="team-result-list">
+      <li class="team-result-item">Список проектных проблем</li>
+      <li class="team-result-item">Карта противоречий между департаментами</li>
+      <li class="team-result-item">Матрица будущих затрат</li>
+      <li class="team-result-item">Перечень проверок по этапам</li>
+      <li class="team-result-item">База решений для следующих проектов</li>
+      <li class="team-result-item">Согласованная система решений</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S8 ЭТАПЫ -->
+<section id="s8" class="section-full">
+  <div class="section-inner">
+    <div class="s-tag">Работа по этапам</div>
+    <h2 class="s-title">На каждом этапе<br>у цифрового двойника свои задачи</h2>
+    <p class="s-lead">От мастер-плана до эксплуатации — двойник помогает принимать решения на каждой стадии жизненного цикла проекта</p>
+    <div class="stages" id="stages-list"></div>
+    <div style="margin-top:2.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2.4rem 3rem;">
+      <div class="mini-label" style="margin-bottom:1rem;">Почему это важно для будущих исследований</div>
+      <p style="font-size:1.45rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem;">Опросы и классические исследования становятся всё сложнее: люди неохотно отвечают. При этом девелоперу всё равно нужны данные о том, как территория реально используется.</p>
+      <p style="font-size:1.45rem;color:var(--muted);line-height:1.65;">Цифровой двойник и эксплуатационные данные позволяют опосредованно, но достоверно собирать массивы информации: как люди ходят, где задерживаются, чем пользуются, какие места избегают.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S9 ЦЕННОСТЬ -->
+<section id="s9" class="section">
+  <div class="s-tag">Итоговая ценность</div>
+  <h2 class="s-title">Цифровой двойник среды помогает<br>синхронизировать участников вокруг продукта</h2>
+  <p class="s-lead">Совместная работа с цифровым двойником даёт конкретные, измеримые результаты для девелопера</p>
+  <div class="value-grid">
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Снижать затраты</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Снижать риск переделок</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Делать будущие затраты видимыми</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Проверять востребованность решений</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Согласовывать департаменты</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Раньше подключать нужных специалистов</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Видеть повседневность глазами пользователя</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Улучшать качество продукта</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Повышать ценность квадратного метра</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Ускорять продажи</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Снижать риск жалоб жителей</div></div>
+    <div class="value-item"><div class="value-dot"></div><div class="value-text">Накапливать данные для следующих проектов</div></div>
+  </div>
+</section>
+
+<!-- S10 ПАРТНЁРСТВО -->
+<section id="s10" class="section-full">
+  <div class="section-inner">
+    <div class="partner-header">
+      <div class="s-tag" style="justify-content:center">Предложение о стратегическом сотрудничестве</div>
+      <h2>Мы уже создали для Летово<br>два прикладных цифровых двойника</h2>
+      <p>Модель ветровых потоков и модель пешеходных потоков на этапе мастер-плана. Эти модели можно использовать и развивать на следующих этапах проекта</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-card-name">А101</div>
+        <div class="partner-card-text">Практическая экспертиза девелопера: знание продукта, процессов, ограничений, экономики проекта и реальной работы команды.</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card-name">Бюро Техники</div>
+        <div class="partner-card-text">Технологическая часть работы: постановка задачи, создание цифровых двойников, моделирование, интерпретация результатов и перевод расчётов в проектные решения.</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card-name">НИЙУРС</div>
+        <div class="partner-card-text">Исследовательская и методологическая экспертиза: анализ сценариев жизнедеятельности, пользовательской оптики, социальной дружественности среды, устойчивого развития и качества продукта.</div>
+      </div>
+    </div>
+    <div class="partner-goal">
+      <div class="partner-goal-label">Цель сотрудничества</div>
+      <div class="partner-goal-text">Создать инструмент, который помогает девелоперу и проектной команде видеть будущую повседневность территории на ранних этапах, принимать более точные решения и усиливать продукт малозатратным образом</div>
+      <div class="partner-goal-sub">Результат этого сотрудничества может стать одним из первых в России примеров цифрового двойника жилой среды, где климат, пешеходные потоки, сценарии жизнедеятельности, эксплуатация и продуктовая ценность рассматриваются совместно</div>
+    </div>
+    <div class="partner-cta">
+      <strong>Вместе мы можем выстроить партнёрскую систему работы:</strong> выявлять задачи департаментов, проверять проектные гипотезы, снижать риск переделок, точнее управлять затратами и создавать более комфортный, удобный и востребованный продукт
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ════════════════════
+     FOOTER
+════════════════════ -->
+<footer>
+  <div class="f-logo"><b>Бюро Техники</b> · bt-comfort.ru</div>
+  <div class="f-note">Вера Бурцева, Генеральный директор · @vera_bt</div>
+</footer>
+
+<script>
+// ── CLIMA CANVAS ──
+(function() {
+  const canvas = document.getElementById('hero-canvas-c');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  const STREAMS = [];
+  const N = 80;
+
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+
+  function makeStream() {
+    return {
+      x: Math.random() * W, y: Math.random() * H,
+      len: Math.random() * 60 + 30,
+      speed: Math.random() * 1.2 + 0.4,
+      angle: Math.random() * 0.3 + 0.1,
+      alpha: Math.random() * 0.3 + 0.1,
+      width: Math.random() * 1.2 + 0.3
+    };
+  }
+
+  function initStreams() {
+    STREAMS.length = 0;
+    for (let i = 0; i < N; i++) STREAMS.push(makeStream());
+  }
+
+  function frame() {
+    if (!document.getElementById('tab-clima').classList.contains('active')) return requestAnimationFrame(frame);
+    ctx.clearRect(0, 0, W, H);
+    for (const s of STREAMS) {
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(s.x - Math.cos(s.angle) * s.len, s.y - Math.sin(s.angle) * s.len);
+      ctx.strokeStyle = `rgba(42,182,165,${s.alpha})`;
+      ctx.lineWidth = s.width;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+      s.x += Math.cos(s.angle) * s.speed;
+      s.y += Math.sin(s.angle) * s.speed;
+      if (s.x > W + s.len || s.y > H + s.len) { s.x = -s.len; s.y = Math.random() * H; }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', () => { resize(); initStreams(); });
+  resize(); initStreams(); frame();
+})();
+
+// ── FLOW CANVAS ──
+(function() {
+  const canvas = document.getElementById('hero-canvas-f');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, walkers = [];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function makeWalker() {
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-.5)*1.1, vy: (Math.random()-.5)*1.1,
+      trail: [], maxTrail: Math.floor(Math.random()*22+8),
+      r: Math.random()*1.6+.5, a: Math.random()*.35+.15
+    };
+  }
+  function init(n=130) { walkers = Array.from({length:n}, makeWalker); }
+  function frame() {
+    if (!document.getElementById('tab-flow').classList.contains('active')) return requestAnimationFrame(frame);
+    ctx.clearRect(0,0,W,H);
+    for (const w of walkers) {
+      w.trail.push({x:w.x, y:w.y});
+      if (w.trail.length > w.maxTrail) w.trail.shift();
+      if (w.trail.length > 1) {
+        ctx.beginPath();
+        ctx.moveTo(w.trail[0].x, w.trail[0].y);
+        for (let i=1; i<w.trail.length; i++) ctx.lineTo(w.trail[i].x, w.trail[i].y);
+        ctx.strokeStyle = `rgba(99,102,241,${w.a*.35})`; ctx.lineWidth = .7; ctx.stroke();
+      }
+      ctx.beginPath(); ctx.arc(w.x, w.y, w.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(99,102,241,${w.a})`; ctx.fill();
+      w.x += w.vx; w.y += w.vy;
+      w.vx += (Math.random()-.5)*.07; w.vy += (Math.random()-.5)*.07;
+      const spd = Math.sqrt(w.vx*w.vx+w.vy*w.vy);
+      if (spd > 1.4) { w.vx = w.vx/spd*1.4; w.vy = w.vy/spd*1.4; }
+      if (spd < 0.25) { w.vx *= 1.4; w.vy *= 1.4; }
+      if (w.x < -30) w.x = W+30; if (w.x > W+30) w.x = -30;
+      if (w.y < -30) w.y = H+30; if (w.y > H+30) w.y = -30;
+    }
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); frame();
+})();
+
+// ── ACCORDIONS ──
+document.querySelectorAll('.acc-head').forEach(h => {
+  h.addEventListener('click', () => {
+    const item = h.closest('.acc-item');
+    const open = item.classList.contains('open');
+    item.closest('.accordion-list').querySelectorAll('.acc-item.open').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+// ── DIGITAL CANVAS ──
+(function() {
+  const canvas = document.getElementById('hero-canvas-d');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, pts = [];
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function init(n=140) {
+    pts = Array.from({length:n}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-.5)*.5, vy: (Math.random()-.5)*.5,
+      r: Math.random()*1.8+.8, a: Math.random()*.5+.2
+    }));
+  }
+  function frame() {
+    if (!document.getElementById('tab-digital').classList.contains('active')) return requestAnimationFrame(frame);
+    ctx.clearRect(0,0,W,H);
+    for (let i=0; i<pts.length; i++) {
+      for (let j=i+1; j<pts.length; j++) {
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+        if (d<130) { ctx.beginPath(); ctx.strokeStyle=`rgba(99,102,241,${(1-d/130)*.2})`; ctx.lineWidth=.6; ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); }
+      }
+      pts[i].x+=pts[i].vx; pts[i].y+=pts[i].vy;
+      if (pts[i].x<0||pts[i].x>W) pts[i].vx*=-1;
+      if (pts[i].y<0||pts[i].y>H) pts[i].vy*=-1;
+      ctx.beginPath(); ctx.arc(pts[i].x,pts[i].y,pts[i].r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${i%5===0?'42,182,165':'99,102,241'},${pts[i].a})`; ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); frame();
+})();
+
+// ── 8 ПРИМЕРОВ ──
+const EX = [
+  { title:'Компостирование и огороды', short:'Их нельзя добавлять в конце как элемент благоустройства — локации, обслуживание и связь с жителями нужно предусмотреть заранее', people:['ESG','продукт','архитекторы','ландшафт','эксплуатация','социологи'], full:'Если проект предусматривает компостирование и городские огороды, их нельзя добавлять в конце. Нужно заранее определить локации, маршруты обслуживания, санитарные ограничения, сценарии использования и связь с жителями.', money:'Решение либо становится работающей частью устойчивого продукта, либо превращается в декоративную инициативу, которую сложно обслуживать и объяснять жителям.' },
+  { title:'Сады с участием жителей', short:'Зоны для высадки растений жителями нужно закладывать заранее, а не искать по остаточному принципу', people:['продукт','ESG','ландшафт','эксплуатация','социологи','архитекторы'], full:'Если в продукте предполагаются места, где жители могут сами высаживать растения, эти зоны нужно предусматривать заранее. Их нельзя формировать из остаточных пространств после инженерных и планировочных решений.', money:'Такие решения усиливают привязанность жителей к территории и работают на репутацию девелопера, но только если они встроены в мастер-план, эксплуатацию и правила использования.' },
+  { title:'Наружные сети и деревья', short:'Зелёные зоны могут остаться без деревьев, если под ними заранее проложены наружные сети', people:['инженеры','ландшафт','архитекторы','продукт','ESG'], full:'Частая ситуация: зелёные зоны на мастер-плане выглядят полноценными, но на следующих стадиях выясняется, что под ними проходят наружные сети. В итоге вместо деревьев остаются газоны и цветники.', money:'Проект теряет качество озеленения, климатическую устойчивость, тень и образ среды. Переделывать сети поздно и дорого.' },
+  { title:'Медвежьи углы и неочевидный трафик', short:'Коммерция и общественные функции могут оказаться там, куда люди почти не доходят', people:['коммерция','продукт','архитекторы','маркетинг','социологи'], full:'Коммерция, сервисы и общественные функции часто распределяются по территории равномерно или композиционно, но фактический трафик будет работать иначе.', money:'Часть заложенных функций может быть нефункциональной. Возникают недозагрузка, слабая коммерческая эффективность, пустые зоны.' },
+  { title:'Транзит через дворы', short:'Кратчайший маршрут может превратить приватный двор в транзитный путь', people:['архитекторы','ландшафт','продукт','социологи','эксплуатация'], full:'Люди идут по кратчайшему маршруту, который становится очевиден уже при эксплуатации. Выявленный транзит может быть учтён при дизайне двора через планировочные решения и умелое зонирование.', money:'Если транзит не учтён, двор теряет приватность, появляются жалобы жителей и конфликт между комфортом маршрута и качеством дворовой среды.' },
+  { title:'Летние террасы и уличные кафе', short:'Терраса может быть предусмотрена формально, но не работать из-за потока, солнца или ветра', people:['архитекторы','коммерция','продукт','благоустройство','социологи','климат'], full:'Летние террасы часто размещаются на солнечных сторонах и вдоль активных фасадов. Но важно проверить, как они совмещаются с пешеходным трафиком, шириной прохода, ветром, солнцем и фактическим комфортом посадки.', money:'Терраса может быть предусмотрена формально, но не стать работающей коммерческой и средовой функцией. Это влияет на доходность первых этажей и качество улицы.' },
+  { title:'Климатическая пригодность сценариев', short:'Площадка может быть построена, но не использоваться из-за ветра, солнцепёка или сезонности', people:['архитекторы','ландшафт','продукт','социологи','климат','ESG'], full:'Настольный теннис, игры с мячом, детские площадки, спортивные зоны и места отдыха чувствительны к ветру, палящему солнцу, перегреву и сезонности. Всё это можно учесть при размещении функций.', money:'Инфраструктура построена, но люди ей не пользуются. Прямой пример затрат без продуктовой отдачи и будущего недовольства жителей.' },
+  { title:'Инфраструктура для разных возрастных групп', short:'Формальная 15-минутная доступность не всегда означает реальное удобство для разных жителей', people:['продукт','социологи','архитекторы','благоустройство','коммерция','ESG'], full:'Для ребёнка, подростка, жителя старшего возраста, родителя с коляской и маломобильного пользователя одна и та же территория видится по-разному.', money:'Если инфраструктура не учитывает разные группы, продукт становится менее универсальным. Продуманное разнообразие повышает ценность среды без роста бюджета.' },
+];
+const exGrid = document.getElementById('ex-grid');
+if (exGrid) {
+  EX.forEach((e, i) => {
+    const card = document.createElement('div');
+    card.className = 'ex-card';
+    card.innerHTML = `
+      <div class="ex-card-head">
+        <div class="ex-num">Пример ${String(i+1).padStart(2,'0')}</div>
+        <div class="ex-title">${e.title}</div>
+        <div class="ex-short">${e.short}</div>
+        <div class="ex-people">${e.people.map(p=>`<span class="ex-tag">${p}</span>`).join('')}</div>
+        <div class="ex-cta">Подробнее <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      </div>
+      <div class="ex-body">
+        <p class="ex-body-text">${e.full}</p>
+        <div class="ex-money"><div class="ex-money-label">Связь с деньгами и продуктом</div><div class="ex-money-text">${e.money}</div></div>
+      </div>`;
+    card.addEventListener('click', () => card.classList.toggle('open'));
+    exGrid.appendChild(card);
+  });
+}
+
+// ── ЭТАПЫ ──
+const STAGES = [
+  { title:'Мастер-план', short:'Проверить базовую структуру территории до принятия планировочных решений', full:'Ветер, солнце, пешеходные потоки, дворы, маршруты, входные группы, общественные пространства, коммерция, инфраструктура и крупные ограничения. Именно здесь изменения стоят дешевле всего.' },
+  { title:'Очерёдность ввода объектов', short:'Понять, как территория будет работать поэтапно, а не только в финальном состоянии', full:'Какие маршруты уже доступны, какие сервисы ещё не работают, где возникает временное неудобство, как жители будут пользоваться средой на каждом этапе.' },
+  { title:'Проектная документация', short:'Уточнить решения на стадии разработки проектной документации', full:'Архитектура, благоустройство, наружные сети, озеленение, входные группы, первые этажи, общественные пространства и эксплуатация. Конфликты ещё можно исправить без дорогостоящих переделок.' },
+  { title:'Строительство', short:'Сохранить решения, которые влияют на качество среды в процессе строительства', full:'Деревья, маршруты, проходы, тень, зоны пребывания, входные группы, приватность дворов и общественные пространства. Этап, когда важно не потерять качество под давлением строительных ограничений.' },
+  { title:'Эксплуатация', short:'Сопоставить проектные гипотезы с реальной жизнью территории после заселения', full:'Потоки, поведение людей, жалобы, работа сервисов, микроклимат и использование общественных пространств. Создавая цифровой двойник на этапе мастер-плана, можно заранее определить, какие данные стоит собирать после ввода объекта.' },
+];
+const stagesList = document.getElementById('stages-list');
+if (stagesList) {
+  STAGES.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'stage-item';
+    el.innerHTML = `
+      <div class="stage-head">
+        <div class="stage-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="stage-head-main">
+          <div class="stage-title">${s.title}</div>
+          <div class="stage-short">${s.short}</div>
+        </div>
+      </div>
+      <div class="stage-body"><p class="stage-body-text">${s.full}</p></div>`;
+    el.querySelector('.stage-head').addEventListener('click', () => {
+      const open = el.classList.contains('open');
+      stagesList.querySelectorAll('.stage-item.open').forEach(x => x.classList.remove('open'));
+      if (!open) el.classList.add('open');
+    });
+    stagesList.appendChild(el);
+  });
+}
+
+// ── TAB SWITCHING ──
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    document.getElementById('tab-' + target).classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
